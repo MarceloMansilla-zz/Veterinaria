@@ -1,0 +1,13 @@
+package ar.com.veterinaria.app.service;
+
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
+import ar.com.veterinaria.app.service.contract.BreedContractService;
+
+@Service
+@Transactional
+public class BreedService implements BreedContractService {
+
+}

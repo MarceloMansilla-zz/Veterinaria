@@ -1,0 +1,5 @@
+package ar.com.veterinaria.app.helper;
+
+public class BreedDaoImplHelper {
+
+}

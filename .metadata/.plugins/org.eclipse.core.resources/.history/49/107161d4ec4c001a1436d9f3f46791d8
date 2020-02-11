@@ -1,0 +1,53 @@
+package ar.com.veterinaria.app.service;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
+import ar.com.veterinaria.app.entities.Breed;
+import ar.com.veterinaria.app.service.contract.BreedContractService;
+
+@Service
+@Transactional
+public class BreedService implements BreedContractService {
+
+	@Autowired
+	private BreedDao vehicleDao;
+
+	public BreedService() {
+	}
+
+	@Override
+	public Breed findById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void remove(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Map<String, Object>> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Breed add(Breed t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Breed update(int id, Breed t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

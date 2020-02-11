@@ -1,0 +1,16 @@
+package ar.com.veterinaria.app.helper;
+
+public class BreedDaoImplHelper {
+	public static boolean isDuplicated(VehicleRepository vehicleRepository, Vehicle modelVehicle) {
+		List<Vehicle> result = vehicleRepository.findAll();
+		int ini = 0;
+		while (ini < result.size()) {
+			Vehicle vehicle = result.get(ini);
+			if (vehicle.getModel().equals(modelVehicle.getModel())) {
+				return true;
+			}
+			ini++;
+		}
+		return false;
+	}
+}

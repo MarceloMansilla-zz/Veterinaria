@@ -1,0 +1,33 @@
+1581435010309	Rename package 'Veterinaria.Vet'
+1581435824408	Copy package
+1581435832527	Copy package
+1581435844001	Copy package
+1581435852795	Copy package
+1581435863239	Copy package
+1581435873111	Copy package
+1581435880921	Copy package
+1581435893520	Copy package
+1581436855711	Copy compilation unit
+1581436865861	Copy compilation unit
+1581436970881	Rename local variable 'complement'
+1581437126508	Rename local variable 'descripcion'
+1581438919561	Rename package 'ar.com.veterinaria.app.service.contract'
+1581438941481	Move compilation units
+1581438958174	Rename package 'ar.com.veterinaria.app.service.contract'
+1581438991390	Move compilation units
+1581439807644	Rename local variable 'pet'
+1581439908921	Rename local variable 'vehicle'
+1581440036030	Rename local variable 'vehicleService'
+1581440092425	Rename field 'vehicleService'
+1581440099746	Rename local variable 'vehicle'
+1581440138168	Rename type 'BeedDuplicatedException'
+1581440143101	Rename type 'BeedNotFoundException'
+1581440146916	Rename type 'BeedException'
+1581440253331	Rename local variable 'vehicle'
+1581440265454	Rename local variable 'vehicle'
+1581441178599	Rename local variable 'modelVehicle'
+1581441193616	Rename local variable 'vehicleRepository'
+1581441227738	Rename local variable 'breed'
+1581441234239	Rename local variable 'vehicle'
+1581441240264	Rename local variable 'breedParam'
+1581441526109	Rename local variable 't'

@@ -1,0 +1,18 @@
+package ar.com.veterinaria.app.exception;
+
+public class BeedDuplicatedException extends RuntimeException {
+
+	private static final long serialVersionUID = 1093306691287711077L;
+
+	public BeedDuplicatedException(String description) {
+		super("The Complement " + description + " already exists.");
+	}
+	
+	public BeedDuplicatedException(int id) {
+		super("The Complement " + id + " already exists.");
+	}
+	
+	public BeedDuplicatedException(Breed breed) {
+		super("The Complement " + breed + " already exists.");
+	}
+}

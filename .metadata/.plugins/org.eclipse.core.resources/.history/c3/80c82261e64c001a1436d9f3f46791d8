@@ -1,0 +1,12 @@
+package ar.com.veterinaria.app.entities;
+
+import java.io.Serializable;
+
+public class MedicalConsultation implements Serializable {
+
+	private static final long serialVersionUID = -8021659893493109973L;
+	private Integer id;
+	private String medicalConsultationDate;
+	private String treatment;
+	private String observation;
+}

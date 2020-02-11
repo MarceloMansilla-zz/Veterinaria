@@ -1,0 +1,7 @@
+package ar.com.veterinaria.app.service;
+
+import ar.com.veterinaria.app.entities.Breed;
+
+public interface BreedContractService extends BaseContractService<Breed> {
+
+}

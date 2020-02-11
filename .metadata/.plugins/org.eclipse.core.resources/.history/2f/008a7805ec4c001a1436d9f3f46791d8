@@ -1,0 +1,19 @@
+package ar.com.veterinaria.app.dao;
+
+import java.util.List;
+import java.util.Map;
+import ar.com.sysone.backend.entities.BaseEntity;
+
+public interface BaseDao<T> {
+
+	public T findById(int id);
+
+	public void remove(int id);
+
+	public T add(T t);
+
+	public T update(int id, T t);
+
+	public List<Map<String, Object>> findAll();
+
+}

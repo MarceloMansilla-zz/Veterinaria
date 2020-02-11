@@ -1,0 +1,8 @@
+package ar.com.veterinaria.app.service;
+
+
+@Service
+@Transactional
+public class BreedService implements BreedContractService {
+
+}

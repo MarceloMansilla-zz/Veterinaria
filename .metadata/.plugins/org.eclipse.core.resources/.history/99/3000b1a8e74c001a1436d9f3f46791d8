@@ -1,0 +1,5 @@
+package ar.com.veterinaria.app.exception;
+
+public class BeedException extends RuntimeException {
+
+}
