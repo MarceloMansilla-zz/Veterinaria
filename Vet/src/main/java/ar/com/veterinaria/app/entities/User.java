@@ -2,12 +2,35 @@ package ar.com.veterinaria.app.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@Entity
+@Table(name = "User")
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(Include.NON_NULL)
 public class User extends Person implements Serializable {
 
 	private static final long serialVersionUID = 3598761605336012017L;
+
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idUser", unique = true, nullable = false)
+	@JsonIgnore
 	private Integer id;
+
+	@Column(name = "email", nullable = false, length = 50)
 	private String email;
+	@Column(name = "password", nullable = false, length = 50)
 	private String password;
+	@Column(name = "passwordconfirmation", nullable = false, length = 50)
 	private String passwordConfirmation;
 
 	public User() {
@@ -46,16 +69,4 @@ public class User extends Person implements Serializable {
 	public void setPasswordConfirmation(String passwordConfirmation) {
 		this.passwordConfirmation = passwordConfirmation;
 	}
-
-	/*
-	 * @ManyToOne
-	 * 
-	 * @JoinColumns({
-	 * 
-	 * @JoinColumn(name="ADDR_ID", referencedColumnName="ID"),
-	 * 
-	 * @JoinColumn(name="ADDR_ZIP", referencedColumnName="ZIP") }) public Address
-	 * getAddress() { return address; }
-	 * 
-	 */
 }

@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import ar.com.veterinaria.app.entities.Breed;
 import ar.com.veterinaria.app.exception.BreedDuplicatedException;
+import ar.com.veterinaria.app.exception.BreedInvalidDataException;
 import ar.com.veterinaria.app.exception.BreedNotFoundException;
 import ar.com.veterinaria.app.service.BreedService;
 import io.swagger.annotations.Api;
@@ -52,6 +52,9 @@ public class BreedController {
 			if (breedService.exist(breed)) {
 				throw new BreedDuplicatedException(breed.getBreed());
 			}
+			if (!breedService.isValidInputData(breed)) {
+				throw new BreedInvalidDataException(breed);
+			}
 			breedService.add(breed);
 			return new ResponseEntity<Breed>(breed, HttpStatus.OK);
 		} catch (Exception e) {
@@ -81,7 +84,7 @@ public class BreedController {
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),
 			@ApiResponse(code = 403, message = "Operation is forbidden"),
 			@ApiResponse(code = 500, message = "Server error") })
-	public ResponseEntity<Breed> getById(@PathVariable("id") int id) throws BreedNotFoundException {
+	public ResponseEntity<Breed> getById(@PathVariable("id") int id) {
 		try {
 			Breed breed = breedService.findById(id);
 			if (breed != null) {
@@ -116,7 +119,7 @@ public class BreedController {
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),
 			@ApiResponse(code = 403, message = "Operation is forbidden"),
 			@ApiResponse(code = 500, message = "Server error") })
-	public ResponseEntity<Void> delete(@PathVariable("id") int id) throws BreedNotFoundException {
+	public ResponseEntity<Void> delete(@PathVariable("id") int id) {
 		try {
 			breedService.remove(id);
 			return ResponseEntity.status(HttpStatus.OK).build();

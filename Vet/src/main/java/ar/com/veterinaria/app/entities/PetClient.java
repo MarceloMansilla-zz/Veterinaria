@@ -25,7 +25,7 @@ public class PetClient implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "idPetClient", unique = true, nullable = false, precision = 10, scale = 0)
+	@Column(name = "idPetClient", unique = true, nullable = false)
 	@JsonIgnore
 	private Integer id;
 

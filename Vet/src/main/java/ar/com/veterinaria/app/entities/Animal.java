@@ -16,16 +16,13 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @Table(name = "Animal")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class Animal implements Serializable {
 
-	/**
-	 * 
-	 */
+public class Animal implements Serializable {
 	private static final long serialVersionUID = 1195521147885283169L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idAnimal", unique = true, nullable = false, precision = 10, scale = 0)
+	@Column(name = "idAnimal", unique = true, nullable = false)
 	@JsonIgnore
 	private Integer id;
 

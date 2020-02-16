@@ -31,7 +31,7 @@ public class Breed implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE) // generator = "CAR_SEQ",
 	@SequenceGenerator(name = "ID_SEQ", allocationSize = 1) // sequenceName = "ID_SEQ"
-	@Column(name = "idBreed", unique = true, nullable = false, precision = 10, scale = 0)
+	@Column(name = "idBreed", unique = true, nullable = false)
 	@JsonIgnore
 	private Integer id;
 

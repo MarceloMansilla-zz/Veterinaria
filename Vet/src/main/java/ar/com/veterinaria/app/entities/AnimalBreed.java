@@ -29,7 +29,7 @@ public class AnimalBreed implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "idAnimalBreed", unique = true, nullable = false, precision = 10, scale = 0)
+	@Column(name = "idAnimalBreed", unique = true, nullable = false)
 	@JsonIgnore
 	private Integer id;
 

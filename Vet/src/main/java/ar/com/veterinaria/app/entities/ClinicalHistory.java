@@ -25,7 +25,7 @@ public class ClinicalHistory implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idClinicalHistory", unique = true, nullable = false, precision = 10, scale = 0)
+	@Column(name = "idClinicalHistory", unique = true, nullable = false)
 	@JsonIgnore
 	private Integer id;
 

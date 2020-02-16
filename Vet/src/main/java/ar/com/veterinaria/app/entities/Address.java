@@ -19,14 +19,11 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class Address implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6581437315508313687L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idAddress", unique = true, nullable = false, precision = 10, scale = 0)
+	@Column(name = "idAddress", unique = true, nullable = false)
 	@JsonIgnore
 	private Integer id;
 

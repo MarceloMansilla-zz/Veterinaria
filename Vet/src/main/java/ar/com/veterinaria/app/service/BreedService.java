@@ -2,14 +2,12 @@ package ar.com.veterinaria.app.service;
 
 import java.util.List;
 import java.util.Map;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import ar.com.veterinaria.app.dao.BreedDao;
 import ar.com.veterinaria.app.entities.Breed;
+import ar.com.veterinaria.app.helper.service.BreedServiceHelper;
 import ar.com.veterinaria.app.service.contract.BreedContractService;
 
 @Service
@@ -18,6 +16,9 @@ public class BreedService implements BreedContractService {
 
 	@Autowired
 	private BreedDao breedDao;
+
+	@Autowired
+	private BreedServiceHelper breedServiceHelper;
 
 	public BreedService() {
 	}
@@ -43,9 +44,8 @@ public class BreedService implements BreedContractService {
 		List<Map<String, Object>> result = breedDao.findAll();
 		if (result.size() > 0) {
 			return result;
-		} else {
-			return null;
 		}
+		return null;
 	}
 
 	@Override
@@ -73,7 +73,14 @@ public class BreedService implements BreedContractService {
 			throw new IllegalArgumentException("The passed object cannot be null.");
 		}
 		return breedDao.exist(breed);
+	}
 
+	@Override
+	public boolean isValidInputData(Breed t) {
+		if (breedServiceHelper.isValidName(t)) {
+			return true;
+		}
+		return false;
 	}
 
 }

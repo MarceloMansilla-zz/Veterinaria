@@ -16,5 +16,7 @@ public interface BaseContractService<T> {
 	T update(int id, T t);
 
 	boolean exist(T t);
+	
+	boolean isValidInputData(T t);
 
 }
