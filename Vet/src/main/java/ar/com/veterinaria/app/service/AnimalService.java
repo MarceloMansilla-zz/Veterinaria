@@ -75,9 +75,6 @@ public class AnimalService implements AnimalContractService {
 
 	@Override
 	public boolean isValidInputData(Animal animal) {
-		System.out.println(" **** " + animal.getName());
-		System.out.println(" ---  " + animal.getClass());
-		System.out.println(" ---  " + animal);
 		if (AnimalManagerServiceHelper.validate(animal)) {
 			return true;
 		}

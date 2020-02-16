@@ -23,7 +23,6 @@ public class AnimalManagerServiceHelper {
 	
 
 	public static boolean validate(Animal animal) {
-		System.out.println(" ¨¨¨¨¨¨¨ " + animal);
 		if (!animalServiceHelper.isValidName(animal)) {
 			throw new AnimalInvalidDataException(animal);
 
