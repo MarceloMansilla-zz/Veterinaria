@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ar.com.veterinaria.app.dao.BreedDao;
 import ar.com.veterinaria.app.entities.Breed;
-import ar.com.veterinaria.app.helper.service.BreedServiceHelper;
+import ar.com.veterinaria.app.helper.service.BreedManagerServiceHelper;
 import ar.com.veterinaria.app.service.contract.BreedContractService;
 
 @Service
@@ -16,9 +16,6 @@ public class BreedService implements BreedContractService {
 
 	@Autowired
 	private BreedDao breedDao;
-
-	@Autowired
-	private BreedServiceHelper breedServiceHelper;
 
 	public BreedService() {
 	}
@@ -76,8 +73,8 @@ public class BreedService implements BreedContractService {
 	}
 
 	@Override
-	public boolean isValidInputData(Breed t) {
-		if (breedServiceHelper.isValidName(t)) {
+	public boolean isValidInputData(Breed breed) {
+		if (BreedManagerServiceHelper.validate(breed)) {
 			return true;
 		}
 		return false;

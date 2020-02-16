@@ -13,7 +13,6 @@ public class AnimalServiceHelper extends BaseServiceHelper implements AnimalCont
 
 	@Override
 	public boolean isValidName(Animal animal) {
-		System.out.println(" +++ "+animal);
 		if (getNamePattern().matcher(animal.getName()).matches()) {
 			return true;
 		}

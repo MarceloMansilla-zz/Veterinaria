@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ar.com.veterinaria.app.entities.Breed;
-import ar.com.veterinaria.app.exception.BreedDuplicatedException;
-import ar.com.veterinaria.app.exception.BreedInvalidDataException;
 import ar.com.veterinaria.app.exception.BreedNotFoundException;
 import ar.com.veterinaria.app.service.BreedService;
 import io.swagger.annotations.Api;
@@ -49,12 +47,9 @@ public class BreedController {
 			@ApiResponse(code = 500, message = "Internal server error") })
 	public ResponseEntity<Breed> create(@RequestBody Breed breed) {
 		try {
-			if (breedService.exist(breed)) {
-				throw new BreedDuplicatedException(breed.getBreed());
-			}
-			if (!breedService.isValidInputData(breed)) {
-				throw new BreedInvalidDataException(breed);
-			}
+
+			breedService.isValidInputData(breed);
+			breedService.exist(breed);
 			breedService.add(breed);
 			return new ResponseEntity<Breed>(breed, HttpStatus.OK);
 		} catch (Exception e) {

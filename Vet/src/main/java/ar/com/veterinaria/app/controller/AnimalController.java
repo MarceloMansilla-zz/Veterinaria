@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ar.com.veterinaria.app.entities.Animal;
 import ar.com.veterinaria.app.entities.Breed;
-import ar.com.veterinaria.app.exception.AnimalDuplicatedException;
 import ar.com.veterinaria.app.exception.AnimalNotFoundException;
 import ar.com.veterinaria.app.service.AnimalService;
 import io.swagger.annotations.Api;
@@ -55,10 +54,8 @@ public class AnimalController {
 		// empty -> white space
 
 		try {
-			if (animalService.exist(animal)) {
-				throw new AnimalDuplicatedException(animal.getName());
-			}
 			animalService.isValidInputData(animal);
+			animalService.exist(animal);
 			animalService.add(animal);
 			return new ResponseEntity<Animal>(animal, HttpStatus.OK);
 		} catch (Exception e) {

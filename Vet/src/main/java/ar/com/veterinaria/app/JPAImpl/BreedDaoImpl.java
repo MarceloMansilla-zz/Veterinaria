@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ar.com.veterinaria.app.dao.BreedDao;
 import ar.com.veterinaria.app.entities.Breed;
-import ar.com.veterinaria.app.helper.daoImpl.BreedDaoImplHelper;
+import ar.com.veterinaria.app.helper.daoImpl.BreedManagerDaoImplHelper;
 import ar.com.veterinaria.app.repository.BreedRepository;
 
 @Repository
@@ -88,10 +88,10 @@ public class BreedDaoImpl implements BreedDao {
 
 	@Override
 	public boolean exist(Breed breed) {
-		if (BreedDaoImplHelper.isDuplicated(breedRepository, breed)) {
-			return true;
+		if (!BreedManagerDaoImplHelper.validate(breed)) {
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 }

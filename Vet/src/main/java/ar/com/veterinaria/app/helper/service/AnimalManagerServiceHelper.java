@@ -20,7 +20,6 @@ public class AnimalManagerServiceHelper {
 	public AnimalManagerServiceHelper(AnimalServiceHelper animalServiceHelper) {
 		this.animalServiceHelper = animalServiceHelper;
 	}
-	
 
 	public static boolean validate(Animal animal) {
 		if (!animalServiceHelper.isValidName(animal)) {

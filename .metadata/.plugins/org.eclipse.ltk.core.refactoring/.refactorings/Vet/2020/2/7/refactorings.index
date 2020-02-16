@@ -89,3 +89,24 @@
 1581816396744	Copy compilation unit
 1581818347128	Delete element
 1581818350332	Delete element
+1581859892262	Copy compilation unit
+1581859910408	Rename field 'animalServiceHelper'
+1581859917438	Rename local variable 'animalServiceHelper'
+1581859925210	Rename local variable 'animal'
+1581860179130	Rename local variable 't'
+1581860664853	Copy compilation unit
+1581861464506	Copy compilation unit
+1581861617204	Copy compilation unit
+1581861643950	Rename field 'animalServiceHelper'
+1581861651216	Rename local variable 'animalServiceHelper'
+1581862213361	Delete element
+1581862510830	Rename local variable 'breedServiceHelper'
+1581862541477	Rename local variable 'breedDaoImplHelper'
+1581862552361	Rename field 'breedServiceHelper'
+1581862580682	Rename local variable 'breed'
+1581863496136	Copy compilation unit
+1581863541182	Rename local variable 'animal'
+1581863548702	Rename local variable 'animalDaoImplHelper'
+1581863554737	Rename local variable 'animalRepository'
+1581863561844	Rename field 'animalDaoImplHelper'
+1581863566836	Rename field 'animalRepository'

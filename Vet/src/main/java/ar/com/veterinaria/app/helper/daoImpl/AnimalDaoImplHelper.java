@@ -1,12 +1,18 @@
 package ar.com.veterinaria.app.helper.daoImpl;
 
 import java.util.List;
-import ar.com.veterinaria.app.entities.Animal;
-import ar.com.veterinaria.app.repository.AnimalRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Service;
 
-public class AnimalDaoImplHelper {
-	public static boolean isDuplicated(AnimalRepository animalRepository, Animal animal) {
-		List<Animal> result = animalRepository.findAll();
+import ar.com.veterinaria.app.entities.Animal;
+import ar.com.veterinaria.app.helper.daoImpl.contract.AnimalContractDaoImplHelper;
+
+@Service
+public class AnimalDaoImplHelper implements AnimalContractDaoImplHelper {
+
+	@Override
+	public boolean isDuplicated(JpaRepository<Animal, Integer> repository, Animal animal) {
+		List<Animal> result = repository.findAll();
 		int ini = 0;
 		while (ini < result.size()) {
 			Animal aAnimal = result.get(ini);

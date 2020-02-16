@@ -1,0 +1,32 @@
+package ar.com.veterinaria.app.helper.daoImpl;
+
+import javax.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import ar.com.veterinaria.app.entities.Breed;
+import ar.com.veterinaria.app.exception.AnimalDuplicatedException;
+import ar.com.veterinaria.app.repository.BreedRepository;
+
+@Service
+@Transactional
+public class BreedManagerDaoImplHelper {
+
+	@Autowired
+	private static BreedRepository breedRepository;
+
+	@Autowired
+	private static BreedDaoImplHelper breedDaoImplHelper;
+
+	@Autowired
+	public BreedManagerDaoImplHelper(BreedDaoImplHelper breedDaoImplHelper, BreedRepository breedRepository) {
+		this.breedDaoImplHelper = breedDaoImplHelper;
+		this.breedRepository = breedRepository;
+	}
+
+	public static boolean validate(Breed breed) {
+		if (breedDaoImplHelper.isDuplicated(breedRepository, breed)) {
+			throw new AnimalDuplicatedException(breed.getBreed());
+		}
+		return false;
+	}
+}
