@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ar.com.veterinaria.app.entities.Breed;
 import ar.com.veterinaria.app.exception.AnimalDuplicatedException;
+import ar.com.veterinaria.app.exception.BreedNotFoundException;
 import ar.com.veterinaria.app.repository.BreedRepository;
 
 @Service
@@ -28,5 +29,12 @@ public class BreedManagerDaoImplHelper {
 			throw new AnimalDuplicatedException(breed.getBreed());
 		}
 		return false;
+	}
+
+	public static boolean existId(Integer id) {
+		if (!breedDaoImplHelper.existId(breedRepository, id)) {
+			throw new BreedNotFoundException(id);
+		}
+		return true;
 	}
 }

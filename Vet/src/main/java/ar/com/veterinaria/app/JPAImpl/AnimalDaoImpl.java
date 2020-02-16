@@ -58,14 +58,13 @@ public class AnimalDaoImpl implements AnimalDao {
 	}
 
 	@Override
-	public Animal update(int id, Animal breed) {
-		try {
-			breed.setId(id);
-			animalRepository.save(breed);
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
+	public Animal update(int id, Animal animal) {
+		if (AnimalManagerDaoImplHelper.existId(id)) {
+			animal.setId(id);
+			animalRepository.save(animal);
+			return animal;
 		}
-		return breed;
+		return null;
 	}
 
 	@Override

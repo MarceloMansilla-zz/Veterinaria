@@ -98,11 +98,12 @@ public class BreedController {
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),
 			@ApiResponse(code = 403, message = "Operation is forbidden"),
 			@ApiResponse(code = 500, message = "Server error") })
-	public ResponseEntity<Void> update(@PathVariable("id") int id, @RequestBody Breed breed)
+	public ResponseEntity<Breed> update(@PathVariable("id") int id, @RequestBody Breed breed)
 			throws BreedNotFoundException {
 		try {
+			breedService.isValidInputData(breed);
 			breedService.update(id, breed);
-			return ResponseEntity.status(HttpStatus.OK).build();
+			return ResponseEntity.status(HttpStatus.OK).body(breed);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();

@@ -23,4 +23,18 @@ public class AnimalDaoImplHelper implements AnimalContractDaoImplHelper {
 		}
 		return false;
 	}
+
+	@Override
+	public boolean existId(JpaRepository<Animal, Integer> repository, Integer id) {
+		List<Animal> result = repository.findAll();
+		int ini = 0;
+		while (ini < result.size()) {
+			Animal aAnimal = result.get(ini);
+			if (aAnimal.getId().equals(id)) {
+				return true;
+			}
+			ini++;
+		}
+		return false;
+	}
 }

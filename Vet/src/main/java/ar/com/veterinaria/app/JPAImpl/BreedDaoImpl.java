@@ -50,7 +50,6 @@ public class BreedDaoImpl implements BreedDao {
 	public Breed add(Breed breed) {
 		try {
 			breedRepository.save(breed);
-
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
@@ -59,13 +58,12 @@ public class BreedDaoImpl implements BreedDao {
 
 	@Override
 	public Breed update(int id, Breed breed) {
-		try {
+		if (BreedManagerDaoImplHelper.existId(id)) {
 			breed.setId(id);
 			breedRepository.save(breed);
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
+			return breed;
 		}
-		return breed;
+		return null;
 	}
 
 	@Override
