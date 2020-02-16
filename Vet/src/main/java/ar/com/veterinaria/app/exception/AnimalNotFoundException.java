@@ -8,7 +8,7 @@ public class AnimalNotFoundException extends RuntimeException {
 
 	private static final long serialVersionUID = 1093306691287711077L;
 
-	public AnimalNotFoundException(long id) {
+	public AnimalNotFoundException(Integer id) {
 		super("Could not find Animal with id " + id);
 	}
 

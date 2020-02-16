@@ -110,3 +110,7 @@
 1581863554737	Rename local variable 'animalRepository'
 1581863561844	Rename field 'animalDaoImplHelper'
 1581863566836	Rename field 'animalRepository'
+1581867531314	Rename method 'existById'
+1581867754556	Rename method 'validateId'
+1581867770511	Rename method 'validateId'
+1581870508000	Rename local variable 'breed'

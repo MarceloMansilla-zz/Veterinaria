@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import ar.com.veterinaria.app.entities.Animal;
 import ar.com.veterinaria.app.exception.AnimalDuplicatedException;
+import ar.com.veterinaria.app.exception.AnimalNotFoundException;
 import ar.com.veterinaria.app.repository.AnimalRepository;
 
 @Service
@@ -28,6 +29,13 @@ public class AnimalManagerDaoImplHelper {
 	public static boolean validate(Animal animal) {
 		if (animalDaoImplHelper.isDuplicated(animalRepository, animal)) {
 			throw new AnimalDuplicatedException(animal.getName());
+		}
+		return false;
+	}
+
+	public static boolean existId(Integer id) {
+		if (!animalDaoImplHelper.existId(animalRepository, id)) {
+			throw new AnimalNotFoundException(id);
 		}
 		return false;
 	}

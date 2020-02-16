@@ -23,4 +23,18 @@ public class BreedDaoImplHelper implements BreedContractDaoImplHelper {
 		}
 		return false;
 	}
+
+	@Override
+	public boolean existId(JpaRepository<Breed, Integer> repository, Integer id) {
+		List<Breed> result = repository.findAll();
+		int ini = 0;
+		while (ini < result.size()) {
+			Breed aBreed = result.get(ini);
+			if (aBreed.getId().equals(id)) {
+				return true;
+			}
+			ini++;
+		}
+		return false;
+	}
 }

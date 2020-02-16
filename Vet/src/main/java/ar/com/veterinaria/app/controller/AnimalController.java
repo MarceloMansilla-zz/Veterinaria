@@ -107,6 +107,7 @@ public class AnimalController {
 	public ResponseEntity<Animal> update(@PathVariable("id") int id, @RequestBody Animal animal)
 			throws AnimalNotFoundException {
 		try {
+			animalService.isValidInputData(animal);
 			animalService.update(id, animal);
 			return ResponseEntity.status(HttpStatus.OK).body(animal);
 		} catch (Exception e) {
