@@ -21,9 +21,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Breed implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -9020280940436560289L;
 
 	public static final Logger logger = LoggerFactory.getLogger(Breed.class);
@@ -35,8 +32,12 @@ public class Breed implements Serializable {
 	@JsonIgnore
 	private Integer id;
 
-	@Column(name = "breed", nullable = true, length = 50)
+	@Column(name = "breed", length = 50)
 	private String breed;
+
+	@Column(name = "deleted", length = 50)
+	@JsonIgnore
+	private boolean deleted;
 
 	public Breed() {
 		super();
@@ -69,6 +70,14 @@ public class Breed implements Serializable {
 
 	public void setBreed(String breed) {
 		this.breed = breed;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 }

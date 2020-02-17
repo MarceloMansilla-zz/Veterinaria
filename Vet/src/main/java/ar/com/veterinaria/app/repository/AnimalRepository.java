@@ -6,7 +6,7 @@ import ar.com.veterinaria.app.entities.Animal;
 
 public interface AnimalRepository extends JpaRepository<Animal, Integer> {
 
-	Animal findBreedById(Integer id);
+	Animal findAnimalById(Integer id);
 
 	List<Animal> findAll();
 

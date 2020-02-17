@@ -39,4 +39,10 @@ public class AnimalManagerDaoImplHelper {
 		}
 		return false;
 	}
+	public static boolean isDeleted(Integer id) {
+		if (animalDaoImplHelper.deleted(animalRepository, id)) {
+			throw new AnimalNotFoundException(id);
+		}
+		return false;
+	}
 }

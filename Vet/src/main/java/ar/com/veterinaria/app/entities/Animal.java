@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 
 public class Animal implements Serializable {
+
 	private static final long serialVersionUID = 1195521147885283169L;
 
 	@Id
@@ -28,6 +29,10 @@ public class Animal implements Serializable {
 
 	@Column(name = "name", nullable = true, length = 70)
 	private String name;
+
+	@Column(name = "deleted", length = 70)
+	@JsonIgnore
+	private boolean deleted;
 
 	public Animal(Integer id, String name) {
 		super();
@@ -60,6 +65,14 @@ public class Animal implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 }

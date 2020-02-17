@@ -28,7 +28,7 @@ public class AnimalDaoImpl implements AnimalDao {
 	@Override
 	public Animal findById(int id) {
 		try {
-			return animalRepository.findBreedById(id);
+			return animalRepository.findAnimalById(id);
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
@@ -37,24 +37,23 @@ public class AnimalDaoImpl implements AnimalDao {
 
 	@Override
 	public void remove(int id) {
-		try {
-			Animal animal = new Animal();
+		if (!AnimalManagerDaoImplHelper.isDeleted(id)) {
+			Animal animal = animalRepository.findAnimalById(id);
 			animal.setId(id);
-			animalRepository.delete(animal);
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
-		}
+			animal.setDeleted(true);
+			animalRepository.save(animal);
+		} // animalRepository.delete(animal);
 	}
 
 	@Override
-	public Animal add(Animal breed) {
+	public Animal add(Animal animal) {
 		try {
-			animalRepository.save(breed);
+			animalRepository.save(animal);
 
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
-		return breed;
+		return animal;
 	}
 
 	@Override
@@ -75,8 +74,10 @@ public class AnimalDaoImpl implements AnimalDao {
 			List<Animal> result = animalRepository.findAll();
 			for (Animal animal : result) {
 				map = new HashMap<>();
-				map.put(animal.getId().toString(), animal);
-				list.add(map);
+				if (!animal.isDeleted()) {
+					map.put(animal.getId().toString(), animal);
+					list.add(map);
+				}
 			}
 			return list;
 		} catch (Exception e) {

@@ -3,7 +3,6 @@ package ar.com.veterinaria.app.helper.daoImpl;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
-
 import ar.com.veterinaria.app.entities.Animal;
 import ar.com.veterinaria.app.helper.daoImpl.contract.AnimalContractDaoImplHelper;
 
@@ -35,6 +34,21 @@ public class AnimalDaoImplHelper implements AnimalContractDaoImplHelper {
 			}
 			ini++;
 		}
+		return false;
+	}
+
+	@Override
+	public boolean deleted(JpaRepository<Animal, Integer> repository, Integer id) {
+		List<Animal> result = repository.findAll();
+		int ini = 0;
+		while (ini < result.size()) {
+			Animal aAnimal = result.get(ini);
+			if (aAnimal.getId().equals(id) && aAnimal.isDeleted()) {
+				return true;
+			}
+			ini++;
+		}
+
 		return false;
 	}
 }

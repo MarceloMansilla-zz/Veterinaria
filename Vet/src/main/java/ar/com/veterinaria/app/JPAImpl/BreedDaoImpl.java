@@ -37,13 +37,12 @@ public class BreedDaoImpl implements BreedDao {
 
 	@Override
 	public void remove(int id) {
-		try {
-			Breed breed = new Breed();
+		if (!BreedManagerDaoImplHelper.isDeleted(id)) {
+			Breed breed = breedRepository.findBreedById(id);
 			breed.setId(id);
-			breedRepository.delete(breed);
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
-		}
+			breed.setDeleted(true);
+			breedRepository.save(breed);
+		} // falta validar id
 	}
 
 	@Override
@@ -74,8 +73,10 @@ public class BreedDaoImpl implements BreedDao {
 			List<Breed> result = breedRepository.findAll();
 			for (Breed breed : result) {
 				map = new HashMap<>();
-				map.put(breed.getId().toString(), breed);
-				list.add(map);
+				if (!breed.isDeleted()) {
+					map.put(breed.getId().toString(), breed);
+					list.add(map);
+				}
 			}
 			return list;
 		} catch (Exception e) {

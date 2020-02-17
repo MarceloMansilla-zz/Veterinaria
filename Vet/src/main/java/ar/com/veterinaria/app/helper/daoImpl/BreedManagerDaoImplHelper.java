@@ -37,4 +37,12 @@ public class BreedManagerDaoImplHelper {
 		}
 		return true;
 	}
+	
+	public static boolean isDeleted(Integer id) {
+		if (breedDaoImplHelper.deleted(breedRepository, id)) {
+			throw new BreedNotFoundException(id);
+		}
+		return false;
+	}
+	
 }
