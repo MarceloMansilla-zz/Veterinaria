@@ -4,8 +4,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ar.com.veterinaria.app.entities.Breed;
-import ar.com.veterinaria.app.exception.BreedInvalidDataException;
-import ar.com.veterinaria.app.exception.BreedValidationLengthDataException;
+import ar.com.veterinaria.app.exception.invalidData.BreedInvalidDataException;
+import ar.com.veterinaria.app.exception.validationLength.BreedValidationLengthDataException;
 
 @Service
 @Transactional

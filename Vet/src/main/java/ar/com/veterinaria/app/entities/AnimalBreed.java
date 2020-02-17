@@ -41,6 +41,10 @@ public class AnimalBreed implements Serializable {
 	@JoinColumn(name = "idAnimal", nullable = true)
 	private Animal animal;
 
+	@Column(name = "deleted", nullable = false)
+	@JsonIgnore
+	private boolean deleted;
+
 	public AnimalBreed() {
 		super();
 	}
@@ -84,4 +88,11 @@ public class AnimalBreed implements Serializable {
 		this.animal = animal;
 	}
 
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
 }

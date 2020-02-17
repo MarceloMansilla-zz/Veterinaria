@@ -1,4 +1,4 @@
-package ar.com.veterinaria.app.exception;
+package ar.com.veterinaria.app.exception.duplicate;
 
 import ar.com.veterinaria.app.entities.Breed;
 import org.springframework.http.HttpStatus;

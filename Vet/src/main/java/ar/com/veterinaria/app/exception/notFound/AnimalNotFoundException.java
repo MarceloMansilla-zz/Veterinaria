@@ -1,4 +1,4 @@
-package ar.com.veterinaria.app.exception;
+package ar.com.veterinaria.app.exception.notFound;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

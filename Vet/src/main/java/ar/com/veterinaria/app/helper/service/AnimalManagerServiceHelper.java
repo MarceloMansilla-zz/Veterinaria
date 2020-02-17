@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.com.veterinaria.app.entities.Animal;
-import ar.com.veterinaria.app.exception.AnimalInvalidDataException;
-import ar.com.veterinaria.app.exception.AnimalValidationLengthDataException;
+import ar.com.veterinaria.app.exception.invalidData.AnimalInvalidDataException;
+import ar.com.veterinaria.app.exception.validationLength.AnimalValidationLengthDataException;
 
 @Service
 @Transactional

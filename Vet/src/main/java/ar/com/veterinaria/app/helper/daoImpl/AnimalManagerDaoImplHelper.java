@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.com.veterinaria.app.entities.Animal;
-import ar.com.veterinaria.app.exception.AnimalDuplicatedException;
-import ar.com.veterinaria.app.exception.AnimalNotFoundException;
+import ar.com.veterinaria.app.exception.duplicate.AnimalDuplicatedException;
+import ar.com.veterinaria.app.exception.notFound.AnimalNotFoundException;
 import ar.com.veterinaria.app.repository.AnimalRepository;
 
 @Service

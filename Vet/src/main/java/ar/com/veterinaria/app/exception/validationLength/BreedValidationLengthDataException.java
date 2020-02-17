@@ -1,4 +1,4 @@
-package ar.com.veterinaria.app.exception;
+package ar.com.veterinaria.app.exception.validationLength;
 
 import ar.com.veterinaria.app.entities.Breed;
 

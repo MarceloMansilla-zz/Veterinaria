@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ar.com.veterinaria.app.entities.Animal;
 import ar.com.veterinaria.app.entities.Breed;
-import ar.com.veterinaria.app.exception.AnimalNotFoundException;
+import ar.com.veterinaria.app.exception.notFound.AnimalNotFoundException;
 import ar.com.veterinaria.app.service.AnimalService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
