@@ -51,6 +51,12 @@ public class Animal implements Serializable {
 		return animal;
 	}
 
+	public Animal(String name, boolean deleted) {
+		super();
+		this.name = name;
+		this.deleted = deleted;
+	}
+
 	public Integer getId() {
 		return id;
 	}

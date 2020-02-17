@@ -11,4 +11,8 @@ public interface AnimalBreedContractDaoImplHelper extends BaseContractDaoImplHel
 	Breed findBreedByName(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed name);
 
 	Animal findAnimalByName(JpaRepository<AnimalBreed, Integer> repository,AnimalBreed name);
+	
+	Breed getBreedByName(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed name);
+
+	Animal getAnimalByName(JpaRepository<AnimalBreed, Integer> repository,AnimalBreed name);
 }

@@ -53,6 +53,12 @@ public class Breed implements Serializable {
 		this.breed = breed;
 	}
 
+	public Breed(String breed, boolean deleted) {
+		super();
+		this.breed = breed;
+		this.deleted = deleted;
+	}
+
 	public Integer getId() {
 		return id;
 	}

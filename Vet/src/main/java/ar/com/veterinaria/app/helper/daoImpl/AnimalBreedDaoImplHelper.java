@@ -110,4 +110,32 @@ public class AnimalBreedDaoImplHelper implements AnimalBreedContractDaoImplHelpe
 		}
 		return null;
 	}
+
+	@Override
+	public Breed getBreedByName(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed breedName) {
+		List<AnimalBreed> result = repository.findAll();
+		int ini = 0;
+		while (ini < result.size()) {
+			AnimalBreed animalBreed = result.get(ini);
+			if (animalBreed.getBreed().getBreed().equals(breedName.getBreed().getBreed())) {
+				return animalBreed.getBreed();
+			}
+			ini++;
+		}
+		return new Breed(breedName.getBreed().getBreed(), false);
+	}
+
+	@Override
+	public Animal getAnimalByName(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed animalName) {
+		List<AnimalBreed> result = repository.findAll();
+		int ini = 0;
+		while (ini < result.size()) {
+			AnimalBreed animalBreed = result.get(ini);
+			if (animalBreed.getAnimal().getName().equals(animalName.getAnimal().getName())) {
+				return animalBreed.getAnimal();
+			}
+			ini++;
+		}
+		return new Animal(animalName.getAnimal().getName(), false);
+	}
 }
