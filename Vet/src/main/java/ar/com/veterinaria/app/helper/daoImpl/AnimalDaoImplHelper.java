@@ -1,6 +1,11 @@
 package ar.com.veterinaria.app.helper.daoImpl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import ar.com.veterinaria.app.entities.Animal;
@@ -8,6 +13,8 @@ import ar.com.veterinaria.app.helper.daoImpl.contract.AnimalContractDaoImplHelpe
 
 @Service
 public class AnimalDaoImplHelper implements AnimalContractDaoImplHelper {
+
+	private static final Logger logger = LoggerFactory.getLogger(AnimalDaoImplHelper.class);
 
 	@Override
 	public boolean isDuplicated(JpaRepository<Animal, Integer> repository, Animal animal) {
@@ -50,5 +57,25 @@ public class AnimalDaoImplHelper implements AnimalContractDaoImplHelper {
 		}
 
 		return false;
+	}
+
+	@Override
+	public List<Map<String, Object>> findAll(JpaRepository<Animal, Integer> repository) {
+		try {
+			List<Map<String, Object>> list = new ArrayList<>();
+			Map<String, Object> map = new HashMap<>();
+			List<Animal> result = repository.findAll();
+			for (Animal animal : result) {
+				map = new HashMap<>();
+				if (!animal.isDeleted()) {
+					map.put(animal.getId().toString(), animal);
+					list.add(map);
+				}
+			}
+			return list;
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+		}
+		return null;
 	}
 }

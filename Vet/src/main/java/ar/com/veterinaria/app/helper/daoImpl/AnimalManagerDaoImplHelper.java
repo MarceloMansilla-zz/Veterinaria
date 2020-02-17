@@ -1,5 +1,8 @@
 package ar.com.veterinaria.app.helper.daoImpl;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,10 +42,15 @@ public class AnimalManagerDaoImplHelper {
 		}
 		return false;
 	}
+
 	public static boolean isDeleted(Integer id) {
 		if (animalDaoImplHelper.deleted(animalRepository, id)) {
 			throw new AnimalNotFoundException(id);
 		}
 		return false;
+	}
+
+	public static List<Map<String, Object>> findAll() {
+		return animalDaoImplHelper.findAll(animalRepository);
 	}
 }

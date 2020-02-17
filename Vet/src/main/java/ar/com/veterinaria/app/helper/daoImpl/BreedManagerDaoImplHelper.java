@@ -1,5 +1,8 @@
 package ar.com.veterinaria.app.helper.daoImpl;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,12 +40,16 @@ public class BreedManagerDaoImplHelper {
 		}
 		return true;
 	}
-	
+
 	public static boolean isDeleted(Integer id) {
 		if (breedDaoImplHelper.deleted(breedRepository, id)) {
 			throw new BreedNotFoundException(id);
 		}
 		return false;
 	}
-	
+
+	public static List<Map<String, Object>> findAll() {
+		return breedDaoImplHelper.findAll(breedRepository);
+	}
+
 }

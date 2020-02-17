@@ -1,7 +1,5 @@
 package ar.com.veterinaria.app.JPAImpl;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.slf4j.Logger;
@@ -68,22 +66,7 @@ public class AnimalDaoImpl implements AnimalDao {
 
 	@Override
 	public List<Map<String, Object>> findAll() {
-		try {
-			List<Map<String, Object>> list = new ArrayList<>();
-			Map<String, Object> map = new HashMap<>();
-			List<Animal> result = animalRepository.findAll();
-			for (Animal animal : result) {
-				map = new HashMap<>();
-				if (!animal.isDeleted()) {
-					map.put(animal.getId().toString(), animal);
-					list.add(map);
-				}
-			}
-			return list;
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
-		}
-		return null;
+		return AnimalManagerDaoImplHelper.findAll();
 	}
 
 	@Override
