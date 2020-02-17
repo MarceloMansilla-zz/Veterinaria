@@ -1,10 +1,8 @@
 package ar.com.veterinaria.app.helper.service;
 
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import ar.com.veterinaria.app.entities.Animal;
 import ar.com.veterinaria.app.exception.invalidData.AnimalInvalidDataException;
 import ar.com.veterinaria.app.exception.validationLength.AnimalValidationLengthDataException;

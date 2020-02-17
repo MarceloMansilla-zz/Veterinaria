@@ -15,37 +15,36 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import ar.com.veterinaria.app.entities.Animal;
-import ar.com.veterinaria.app.exception.notFound.AnimalNotFoundException;
-import ar.com.veterinaria.app.service.AnimalService;
+import ar.com.veterinaria.app.entities.AnimalBreed;
+import ar.com.veterinaria.app.service.AnimalBreedService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @Controller
-@RequestMapping(value = "/animal", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/animalbreed", produces = MediaType.APPLICATION_JSON_VALUE)
 @Validated
-@Api(tags = "Animal", description = "Endpoint for Animal management")
-public class AnimalController {
+@Api(tags = "AnimalBreed", description = "Endpoint for AnimalBreed management")
+public class AnimalBreedController {
 
-	private static final Logger logger = LoggerFactory.getLogger(AnimalController.class);
-
-	@Autowired
-	AnimalService animalService;
+	private static final Logger logger = LoggerFactory.getLogger(AnimalBreedController.class);
 
 	@Autowired
-	public AnimalController(AnimalService animalService) {
-		this.animalService = animalService;
+	AnimalBreedService animalBreedService;
+
+	@Autowired
+	public AnimalBreedController(AnimalBreedService animalBreedService) {
+		this.animalBreedService = animalBreedService;
 	}
 
 	@GetMapping
-	@RequestMapping(value = "/new-animal", method = RequestMethod.POST)
-	@ApiOperation(value = "Create a new Animal", notes = "Create a new Breed.", response = Animal.class)
+	@RequestMapping(value = "/new-animalBreed", method = RequestMethod.POST)
+	@ApiOperation(value = "Create a new AnimalBreed", notes = "Create a new AnimalBreed.", response = AnimalBreed.class)
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Successful retrieval of Animal List", response = Animal.class),
+			@ApiResponse(code = 200, message = "Successful retrieval of AnimalBreed List", response = AnimalBreed.class),
 			@ApiResponse(code = 500, message = "Internal server error") })
-	public ResponseEntity<Animal> create(@RequestBody Animal animal) {
+	public ResponseEntity<AnimalBreed> create(@RequestBody AnimalBreed animalBreed) {
 
 		// longitud
 		// tipo de dato - letras May y Min, WhiteSpace
@@ -53,10 +52,10 @@ public class AnimalController {
 		// empty -> white space
 
 		try {
-			animalService.isValidInputData(animal);
-			animalService.exist(animal);
-			animalService.add(animal);
-			return new ResponseEntity<Animal>(animal, HttpStatus.OK);
+			animalBreedService.isValidInputData(animalBreed);
+			animalBreedService.exist(animalBreed);
+			animalBreedService.add(animalBreed);
+			return new ResponseEntity<AnimalBreed>(animalBreed, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -64,14 +63,14 @@ public class AnimalController {
 	}
 
 	@GetMapping
-	@RequestMapping(value = "/get-list-animal", method = RequestMethod.GET)
-	@ApiOperation(value = "Returns List of Animal", notes = "Returns a complete list of Animal details.", response = Animal.class)
+	@RequestMapping(value = "/get-list-animalbreed", method = RequestMethod.GET)
+	@ApiOperation(value = "Returns List of AnimalBreed", notes = "Returns a complete list of AnimalBreed details.", response = AnimalBreed.class)
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Successful retrieval of Animal List", response = Animal.class),
+			@ApiResponse(code = 200, message = "Successful retrieval of Animal List", response = AnimalBreed.class),
 			@ApiResponse(code = 500, message = "Internal server error") })
 	public ResponseEntity<List<Map<String, Object>>> getAll() {
 		try {
-			List<Map<String, Object>> result = animalService.findAll();
+			List<Map<String, Object>> result = animalBreedService.findAll();
 			return ResponseEntity.status(HttpStatus.OK).body(result);
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
@@ -80,15 +79,15 @@ public class AnimalController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	@ApiOperation(value = "Search a Animal by ID", response = Animal.class)
+	@ApiOperation(value = "Search a Animal by ID", response = AnimalBreed.class)
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),
 			@ApiResponse(code = 403, message = "Operation is forbidden"),
 			@ApiResponse(code = 500, message = "Server error") })
-	public ResponseEntity<Animal> getById(@PathVariable("id") int id) {
+	public ResponseEntity<AnimalBreed> getById(@PathVariable("id") int id) {
 		try {
-			Animal animal = animalService.findById(id);
-			if (animal != null) {
-				return ResponseEntity.status(HttpStatus.OK).body(animal);
+			AnimalBreed animalBreed = animalBreedService.findById(id);
+			if (animalBreed != null) {
+				return ResponseEntity.status(HttpStatus.OK).body(animalBreed);
 			} else {
 				return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 			}
@@ -99,15 +98,15 @@ public class AnimalController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	@ApiOperation(value = "Update a Animal by ID", response = Animal.class)
+	@ApiOperation(value = "Update a Animal by ID", response = AnimalBreed.class)
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),
 			@ApiResponse(code = 403, message = "Operation is forbidden"),
 			@ApiResponse(code = 500, message = "Server error") })
-	public ResponseEntity<Animal> update(@PathVariable("id") int id, @RequestBody Animal animal) {
+	public ResponseEntity<AnimalBreed> update(@PathVariable("id") int id, @RequestBody AnimalBreed animalBreed) {
 		try {
-			animalService.isValidInputData(animal);
-			animalService.update(id, animal);
-			return ResponseEntity.status(HttpStatus.OK).body(animal);
+			animalBreedService.isValidInputData(animalBreed);
+			animalBreedService.update(id, animalBreed);
+			return ResponseEntity.status(HttpStatus.OK).body(animalBreed);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -115,13 +114,13 @@ public class AnimalController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	@ApiOperation(value = "Delete a Animal by ID", response = Animal.class)
+	@ApiOperation(value = "Delete a AnimalBreed by ID", response = AnimalBreed.class)
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),
 			@ApiResponse(code = 403, message = "Operation is forbidden"),
 			@ApiResponse(code = 500, message = "Server error") })
 	public ResponseEntity<Void> delete(@PathVariable("id") int id) {
 		try {
-			animalService.remove(id);
+			animalBreedService.remove(id);
 			return ResponseEntity.status(HttpStatus.OK).build();
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
