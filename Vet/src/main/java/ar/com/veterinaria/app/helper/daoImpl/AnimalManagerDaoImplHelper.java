@@ -37,10 +37,11 @@ public class AnimalManagerDaoImplHelper {
 	}
 
 	public static boolean existId(Integer id) {
-		if (!animalDaoImplHelper.existId(animalRepository, id)) {
-			throw new AnimalNotFoundException(id);
+		if (animalDaoImplHelper.existId(animalRepository, id)) {
+			return true;			
 		}
-		return false;
+		throw new AnimalNotFoundException(id);
+		
 	}
 
 	public static boolean isDeleted(Integer id) {

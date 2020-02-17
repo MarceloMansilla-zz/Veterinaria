@@ -35,10 +35,11 @@ public class BreedManagerDaoImplHelper {
 	}
 
 	public static boolean existId(Integer id) {
-		if (!breedDaoImplHelper.existId(breedRepository, id)) {
-			throw new BreedNotFoundException(id);
+		if (breedDaoImplHelper.existId(breedRepository, id)) {
+			return true;			
 		}
-		return true;
+		throw new BreedNotFoundException(id);
+		
 	}
 
 	public static boolean isDeleted(Integer id) {
