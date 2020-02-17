@@ -1,0 +1,46 @@
+package ar.com.veterinaria.app.helper.daoImpl;
+
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Service;
+
+import ar.com.veterinaria.app.entities.Animal;
+import ar.com.veterinaria.app.helper.daoImpl.contract.AnimalContractDaoImplHelper;
+
+@Service
+public class AnimalDaoImplHelper implements AnimalContractDaoImplHelper {
+
+	@Override
+	public boolean isDuplicated(JpaRepository<Animal, Integer> repository, Animal animal) {
+		List<Animal> result = repository.findAll();
+		int ini = 0;
+		while (ini < result.size()) {
+			Animal aAnimal = result.get(ini);
+			if (aAnimal.getName().equals(animal.getName())) {
+				return true;
+			}
+			ini++;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean existId(JpaRepository<Animal, Integer> repository, Integer id) {
+		List<Animal> result = repository.findAll();
+		int ini = 0;
+		while (ini < result.size()) {
+			Animal aAnimal = result.get(ini);
+			if (aAnimal.getId().equals(id)) {
+				return true;
+			}
+			ini++;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleted(JpaRepository<Animal, Integer> repository, Integer id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+}

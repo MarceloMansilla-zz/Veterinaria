@@ -1,0 +1,86 @@
+package ar.com.veterinaria.app.entities;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Entity
+@Table(name = "Breed")
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Breed implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9020280940436560289L;
+
+	public static final Logger logger = LoggerFactory.getLogger(Breed.class);
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE) // generator = "CAR_SEQ",
+	@SequenceGenerator(name = "ID_SEQ", allocationSize = 1) // sequenceName = "ID_SEQ"
+	@Column(name = "idBreed", unique = true, nullable = false)
+	@JsonIgnore
+	private Integer id;
+
+	@Column(name = "breed", length = 50)
+	private String breed;
+
+	@Column(name = "deleted", length = 50)
+	@JsonIgnore
+	private boolean deleted;
+
+	public Breed() {
+		super();
+	}
+
+	public static Breed form(Integer id, String breedName) {
+		Breed breed = new Breed();
+		breed.setId(id);
+		breed.setBreed(breedName);
+		return breed;
+	}
+
+	public Breed(Integer id, String breed) {
+		super();
+		this.id = id;
+		this.breed = breed;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getBreed() {
+		return breed;
+	}
+
+	public void setBreed(String breed) {
+		this.breed = breed;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
+}
