@@ -7,12 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -22,12 +19,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Breed implements Serializable {
 
 	private static final long serialVersionUID = -9020280940436560289L;
-
 	public static final Logger logger = LoggerFactory.getLogger(Breed.class);
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE) // generator = "CAR_SEQ",
-	@SequenceGenerator(name = "ID_SEQ", allocationSize = 1) // sequenceName = "ID_SEQ"
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // generator = "CAR_SEQ",
+	// @SequenceGenerator(name = "ID_SEQ", allocationSize = 1) // sequenceName =
+	// "ID_SEQ"
 	@Column(name = "idBreed", unique = true, nullable = false)
 	@JsonIgnore
 	private Integer id;

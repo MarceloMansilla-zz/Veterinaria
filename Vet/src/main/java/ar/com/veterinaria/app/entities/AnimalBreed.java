@@ -22,13 +22,10 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class AnimalBreed implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8753511447348624880L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idAnimalBreed", unique = true, nullable = false)
 	@JsonIgnore
 	private Integer id;

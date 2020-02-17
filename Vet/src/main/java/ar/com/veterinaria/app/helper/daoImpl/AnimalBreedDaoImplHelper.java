@@ -8,7 +8,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
+
+import ar.com.veterinaria.app.entities.Animal;
 import ar.com.veterinaria.app.entities.AnimalBreed;
+import ar.com.veterinaria.app.entities.Breed;
 import ar.com.veterinaria.app.helper.daoImpl.contract.AnimalBreedContractDaoImplHelper;
 
 @Service
@@ -22,7 +25,8 @@ public class AnimalBreedDaoImplHelper implements AnimalBreedContractDaoImplHelpe
 		int ini = 0;
 		while (ini < result.size()) {
 			AnimalBreed animalBreed = result.get(ini);
-			if (animalBreed.getAnimal().getName().equals(animal.getAnimal().getName())) {
+			if (animalBreed.getAnimal().getName().equals(animal.getAnimal().getName())
+					&& animalBreed.getBreed().getBreed().equals(animal.getBreed().getBreed())) {
 				return true;
 			}
 			ini++;
@@ -75,6 +79,34 @@ public class AnimalBreedDaoImplHelper implements AnimalBreedContractDaoImplHelpe
 			return list;
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
+		}
+		return null;
+	}
+
+	@Override
+	public Breed findBreedByName(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed breedName) {
+		List<AnimalBreed> result = repository.findAll();
+		int ini = 0;
+		while (ini < result.size()) {
+			AnimalBreed animalBreed = result.get(ini);
+			if (animalBreed.getBreed().getBreed().equals(breedName.getBreed().getBreed())) {
+				return animalBreed.getBreed();
+			}
+			ini++;
+		}
+		return null;
+	}
+
+	@Override
+	public Animal findAnimalByName(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed animalName) {
+		List<AnimalBreed> result = repository.findAll();
+		int ini = 0;
+		while (ini < result.size()) {
+			AnimalBreed animalBreed = result.get(ini);
+			if (animalBreed.getAnimal().getName().equals(animalName.getAnimal().getName())) {
+				return animalBreed.getAnimal();
+			}
+			ini++;
 		}
 		return null;
 	}
