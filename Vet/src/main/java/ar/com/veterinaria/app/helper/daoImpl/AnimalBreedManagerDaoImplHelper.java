@@ -11,6 +11,7 @@ import ar.com.veterinaria.app.entities.AnimalBreed;
 import ar.com.veterinaria.app.entities.Breed;
 import ar.com.veterinaria.app.exception.AnimalBreedException;
 import ar.com.veterinaria.app.exception.duplicate.AnimalBreedDuplicatedException;
+import ar.com.veterinaria.app.exception.notFound.AnimalBreedNotFoundException;
 import ar.com.veterinaria.app.repository.AnimalBreedRepository;
 import ar.com.veterinaria.app.repository.AnimalRepository;
 import ar.com.veterinaria.app.repository.BreedRepository;
@@ -61,7 +62,7 @@ public class AnimalBreedManagerDaoImplHelper {
 		if (animalBreedDaoImplHelper.existId(animalBreedRepository, id)) {
 			return true;
 		}
-		return false;
+		throw new AnimalBreedNotFoundException(id);
 	}
 
 	public static boolean isAssociation(AnimalBreed animalBreed) {
@@ -92,5 +93,15 @@ public class AnimalBreedManagerDaoImplHelper {
 			aAnimalBreed.setBreed(breed);
 		}
 		return aAnimalBreed;
+	}
+
+	public static AnimalBreed update(AnimalBreed animalBreed) {
+		Animal animal = animalBreedDaoImplHelper.getAnimalByName(animalBreedRepository, animalBreed);
+		Breed breed = animalBreedDaoImplHelper.getBreedByName(animalBreedRepository, animalBreed);
+		animal.setName(animalBreed.getAnimal().getName());
+		breed.setBreed(animalBreed.getBreed().getBreed());
+		animalBreed.setAnimal(animal);
+		animalBreed.setBreed(breed);
+		return animalBreed;
 	}
 }

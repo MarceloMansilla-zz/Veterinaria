@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -94,7 +95,7 @@ public class AnimalBreedController {
 			logger.error(e.getMessage(), e);
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
-	}
+	}*/
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ApiOperation(value = "Update a Animal by ID", response = AnimalBreed.class)
@@ -111,7 +112,7 @@ public class AnimalBreedController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 	}
-
+/*
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ApiOperation(value = "Delete a AnimalBreed by ID", response = AnimalBreed.class)
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),

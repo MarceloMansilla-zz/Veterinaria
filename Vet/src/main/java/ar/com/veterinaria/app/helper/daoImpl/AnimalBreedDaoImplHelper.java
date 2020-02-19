@@ -59,7 +59,6 @@ public class AnimalBreedDaoImplHelper implements AnimalBreedContractDaoImplHelpe
 			}
 			ini++;
 		}
-
 		return false;
 	}
 
@@ -79,34 +78,6 @@ public class AnimalBreedDaoImplHelper implements AnimalBreedContractDaoImplHelpe
 			return list;
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
-		}
-		return null;
-	}
-
-	@Override
-	public Breed findBreedByName(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed breedName) {
-		List<AnimalBreed> result = repository.findAll();
-		int ini = 0;
-		while (ini < result.size()) {
-			AnimalBreed animalBreed = result.get(ini);
-			if (animalBreed.getBreed().getBreed().equals(breedName.getBreed().getBreed())) {
-				return animalBreed.getBreed();
-			}
-			ini++;
-		}
-		return null;
-	}
-
-	@Override
-	public Animal findAnimalByName(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed animalName) {
-		List<AnimalBreed> result = repository.findAll();
-		int ini = 0;
-		while (ini < result.size()) {
-			AnimalBreed animalBreed = result.get(ini);
-			if (animalBreed.getAnimal().getName().equals(animalName.getAnimal().getName())) {
-				return animalBreed.getAnimal();
-			}
-			ini++;
 		}
 		return null;
 	}
@@ -138,4 +109,48 @@ public class AnimalBreedDaoImplHelper implements AnimalBreedContractDaoImplHelpe
 		}
 		return new Animal(animalName.getAnimal().getName(), false);
 	}
+
+	@Override
+	public AnimalBreed findByName(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed animalBreed) {
+		List<AnimalBreed> result = repository.findAll();
+		int ini = 0;
+		while (ini < result.size()) {
+			AnimalBreed aAnimalBreed = result.get(ini);
+			if (aAnimalBreed.getAnimal().getName().equals(animalBreed.getAnimal().getName())
+					&& aAnimalBreed.getBreed().getBreed().equals(animalBreed.getBreed().getBreed())) {
+				return animalBreed;
+			}
+			ini++;
+		}
+		return null;
+	}
+
+	@Override
+	public Breed findBreedByName(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed breed) {
+		List<AnimalBreed> result = repository.findAll();
+		int ini = 0;
+		while (ini < result.size()) {
+			AnimalBreed aAnimalBreed = result.get(ini);
+			if (aAnimalBreed.getBreed().getBreed().equals(breed.getBreed().getBreed())) {
+				return breed.getBreed();
+			}
+			ini++;
+		}
+		return null;
+	}
+
+	@Override
+	public Animal findAnimalByName(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed animal) {
+		List<AnimalBreed> result = repository.findAll();
+		int ini = 0;
+		while (ini < result.size()) {
+			AnimalBreed aAnimalBreed = result.get(ini);
+			if (aAnimalBreed.getAnimal().getName().equals(animal.getAnimal().getName())) {
+				return animal.getAnimal();
+			}
+			ini++;
+		}
+		return null;
+	}
+
 }

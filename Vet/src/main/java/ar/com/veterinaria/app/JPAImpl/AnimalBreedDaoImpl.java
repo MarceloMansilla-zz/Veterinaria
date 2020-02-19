@@ -60,8 +60,8 @@ public class AnimalBreedDaoImpl implements AnimalBreedDao {
 	@Override
 	public AnimalBreed update(int id, AnimalBreed animalBreed) {
 		if (AnimalBreedManagerDaoImplHelper.existId(id)) {
-			animalBreed.setId(id);
-			animalBreedRepository.save(animalBreed);
+			AnimalBreed aAnimalBreed = AnimalBreedManagerDaoImplHelper.update(animalBreed);
+			animalBreedRepository.save(aAnimalBreed);
 			return animalBreed;
 		}
 		return null;
