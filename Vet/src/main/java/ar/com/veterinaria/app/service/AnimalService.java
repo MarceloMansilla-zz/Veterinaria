@@ -81,4 +81,12 @@ public class AnimalService implements AnimalContractService {
 		return false;
 	}
 
+	@Override
+	public Animal findAnimalByName(String animal) {
+		if (animal == null) {
+			throw new IllegalArgumentException("The passed object cannot be null.");
+		}
+		return animalDao.findAnimalByName(animal);
+	}
+
 }

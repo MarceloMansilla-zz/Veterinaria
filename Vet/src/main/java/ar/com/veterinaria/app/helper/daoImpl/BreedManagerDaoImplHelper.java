@@ -52,5 +52,14 @@ public class BreedManagerDaoImplHelper {
 	public static List<Map<String, Object>> findAll() {
 		return breedDaoImplHelper.findAll(breedRepository);
 	}
+	
+	public static Breed findBreedByName(String t) {
+		Breed breed = breedDaoImplHelper.findByName(breedRepository, t);
+		if (breed != null) {
+			return breed;
+		}
+		throw new BreedNotFoundException(t);
+		
+	}
 
 }

@@ -80,12 +80,12 @@ public class BreedDaoImplHelper implements BreedContractDaoImplHelper {
 	}
 
 	@Override
-	public Breed findByName(JpaRepository<Breed, Integer> repository,Breed t) {
+	public Breed findByName(JpaRepository<Breed, Integer> repository,String t) {
 		List<Breed> result = repository.findAll();
 		int ini = 0;
 		while (ini < result.size()) {
 			Breed aBreed = result.get(ini);
-			if (aBreed.getBreed().equals(t.getBreed())) {
+			if (aBreed.getBreed().equals(t)) {
 				return aBreed;
 			}
 			ini++;

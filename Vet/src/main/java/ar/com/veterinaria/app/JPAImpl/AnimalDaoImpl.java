@@ -77,4 +77,9 @@ public class AnimalDaoImpl implements AnimalDao {
 		return true;
 	}
 
+	@Override
+	public Animal findAnimalByName(String name) {
+		return AnimalManagerDaoImplHelper.findByName(name);
+	}
+
 }

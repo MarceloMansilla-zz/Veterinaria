@@ -65,34 +65,39 @@ public class AnimalBreedManagerDaoImplHelper {
 		throw new AnimalBreedNotFoundException(id);
 	}
 
-	public static boolean isAssociation(AnimalBreed animalBreed) {
-		if ((!animalDaoImplHelper.isDuplicated(animalRepository, animalBreed.getAnimal()))
-				&& (breedDaoImplHelper.isDuplicated(breedRepository, animalBreed.getBreed()))) {
-			return true;
+	public static boolean isAssociated(AnimalBreed animalBreed) {
+		boolean existsAnimal = animalDaoImplHelper.isDuplicated(animalRepository, animalBreed.getAnimal());
+		boolean existsBreed = breedDaoImplHelper.isDuplicated(breedRepository, animalBreed.getBreed());
+		if (existsAnimal && !existsBreed) {
+			System.out.println("Is-Association 1");
+			return false;
 
-		} else if ((animalDaoImplHelper.isDuplicated(animalRepository, animalBreed.getAnimal()))
-				&& (!breedDaoImplHelper.isDuplicated(breedRepository, animalBreed.getBreed()))) {
-			return true;
+		} else if (!existsAnimal && existsBreed) {
+			System.out.println("Is-Association 2");
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 	public static AnimalBreed associate(AnimalBreed animalBreed) {
-		AnimalBreed aAnimalBreed = new AnimalBreed();
-		if (((!animalDaoImplHelper.isDuplicated(animalRepository, animalBreed.getAnimal()))
-				&& (breedDaoImplHelper.isDuplicated(breedRepository, animalBreed.getBreed())))) {
-			Animal animal = animalBreedDaoImplHelper.getAnimalByName(animalBreedRepository, animalBreed);
-			Breed breed = animalBreedDaoImplHelper.getBreedByName(animalBreedRepository, animalBreed);
-			aAnimalBreed.setAnimal(animal);
-			aAnimalBreed.setBreed(breed);
-		} else if (((animalDaoImplHelper.isDuplicated(animalRepository, animalBreed.getAnimal()))
-				&& (!breedDaoImplHelper.isDuplicated(breedRepository, animalBreed.getBreed())))) {
-			Animal animal = animalBreedDaoImplHelper.getAnimalByName(animalBreedRepository, animalBreed);
-			Breed breed = animalBreedDaoImplHelper.getBreedByName(animalBreedRepository, animalBreed);
-			aAnimalBreed.setAnimal(animal);
-			aAnimalBreed.setBreed(breed);
+
+		// CHECK ASSOCIATION DUPLICATED ANIMAL AND BREED IN DB BEFORE DOING THE
+		// ASSOCIATION
+		Animal animal = animalDaoImplHelper.findByName(animalRepository, animalBreed.getAnimal().getName());
+		Breed breed = breedDaoImplHelper.findByName(breedRepository, animalBreed.getBreed().getBreed());
+
+		if (animal != null && breed == null) {
+			System.out.println("Association 1");
+			Breed aBreed = new Breed();
+			aBreed.setBreed(breed.getBreed());
+			animalBreed.setBreed(aBreed);
+		} else if (animal == null && breed != null) {
+			System.out.println("Association 2");
+			Animal aAnimal = new Animal();
+			aAnimal.setName(animal.getName());
+			animalBreed.setAnimal(aAnimal);
 		}
-		return aAnimalBreed;
+		return animalBreed;
 	}
 
 	public static AnimalBreed update(AnimalBreed animalBreed) {

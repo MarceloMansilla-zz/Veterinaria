@@ -76,4 +76,9 @@ public class BreedDaoImpl implements BreedDao {
 		return true;
 	}
 
+	@Override
+	public Breed findBreedByName(String breed) {
+		return BreedManagerDaoImplHelper.findBreedByName(breed);
+	}
+
 }

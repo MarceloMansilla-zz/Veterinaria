@@ -38,10 +38,10 @@ public class AnimalManagerDaoImplHelper {
 
 	public static boolean existId(Integer id) {
 		if (animalDaoImplHelper.existId(animalRepository, id)) {
-			return true;			
+			return true;
 		}
 		throw new AnimalNotFoundException(id);
-		
+
 	}
 
 	public static boolean isDeleted(Integer id) {
@@ -53,5 +53,13 @@ public class AnimalManagerDaoImplHelper {
 
 	public static List<Map<String, Object>> findAll() {
 		return animalDaoImplHelper.findAll(animalRepository);
+	}
+
+	public static Animal findByName(String name) {
+		Animal animal = animalDaoImplHelper.findByName(animalRepository, name);
+		if (animal != null) {
+			return animal;
+		}
+		throw new AnimalNotFoundException(name);
 	}
 }

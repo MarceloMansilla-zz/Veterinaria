@@ -80,17 +80,16 @@ public class AnimalDaoImplHelper implements AnimalContractDaoImplHelper {
 	}
 
 	@Override
-	public Animal findByName(JpaRepository<Animal, Integer> repository, Animal t) {
+	public Animal findByName(JpaRepository<Animal, Integer> repository, String t) {
 		List<Animal> result = repository.findAll();
 		int ini = 0;
 		while (ini < result.size()) {
 			Animal aAnimal = result.get(ini);
-			if (aAnimal.getName().equals(t.getName())) {
+			if (aAnimal.getName().equals(t)) {
 				return aAnimal;
 			}
 			ini++;
 		}
-
 		return null;
 	}
 }

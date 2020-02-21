@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ar.com.veterinaria.app.entities.Animal;
-import ar.com.veterinaria.app.exception.notFound.AnimalNotFoundException;
 import ar.com.veterinaria.app.service.AnimalService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -79,7 +78,7 @@ public class AnimalController {
 		}
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "search-by-id/{id}", method = RequestMethod.GET)
 	@ApiOperation(value = "Search a Animal by ID", response = Animal.class)
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),
 			@ApiResponse(code = 403, message = "Operation is forbidden"),
@@ -96,6 +95,23 @@ public class AnimalController {
 			logger.error(e.getMessage(), e);
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
+	}
+
+	// TO BE DEVELOPED
+	@RequestMapping(value = "/search-by-name/{animal}", method = RequestMethod.GET)
+	@ApiOperation(value = "Search a Animal by Name", response = Animal.class)
+	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),
+			@ApiResponse(code = 403, message = "Operation is forbidden"),
+			@ApiResponse(code = 500, message = "Server error") })
+	public ResponseEntity<Animal> getByName(@PathVariable("animal") String animal) {
+		try {
+			Animal aAnimal = animalService.findAnimalByName(animal);
+			return ResponseEntity.status(HttpStatus.OK).body(aAnimal);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		}
+
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
