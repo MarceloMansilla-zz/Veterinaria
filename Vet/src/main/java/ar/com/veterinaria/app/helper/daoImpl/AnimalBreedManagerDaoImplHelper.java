@@ -5,11 +5,9 @@ import java.util.Map;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import ar.com.veterinaria.app.entities.Animal;
 import ar.com.veterinaria.app.entities.AnimalBreed;
 import ar.com.veterinaria.app.entities.Breed;
-import ar.com.veterinaria.app.exception.AnimalBreedException;
 import ar.com.veterinaria.app.exception.duplicate.AnimalBreedDuplicatedException;
 import ar.com.veterinaria.app.exception.notFound.AnimalBreedNotFoundException;
 import ar.com.veterinaria.app.repository.AnimalBreedRepository;
@@ -71,7 +69,6 @@ public class AnimalBreedManagerDaoImplHelper {
 		if (existsAnimal && !existsBreed) {
 			System.out.println("Is-Association 1");
 			return false;
-
 		} else if (!existsAnimal && existsBreed) {
 			System.out.println("Is-Association 2");
 			return false;
@@ -89,13 +86,15 @@ public class AnimalBreedManagerDaoImplHelper {
 		if (animal != null && breed == null) {
 			System.out.println("Association 1");
 			Breed aBreed = new Breed();
-			aBreed.setBreed(breed.getBreed());
+			aBreed.setBreed(animalBreed.getBreed().getBreed());
 			animalBreed.setBreed(aBreed);
+			animalBreed.setAnimal(animal);
 		} else if (animal == null && breed != null) {
 			System.out.println("Association 2");
 			Animal aAnimal = new Animal();
-			aAnimal.setName(animal.getName());
+			aAnimal.setName(animalBreed.getAnimal().getName());
 			animalBreed.setAnimal(aAnimal);
+			animalBreed.setBreed(breed);
 		}
 		return animalBreed;
 	}

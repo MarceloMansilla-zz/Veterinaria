@@ -48,8 +48,6 @@ public class AnimalBreedDaoImpl implements AnimalBreedDao {
 	public AnimalBreed add(AnimalBreed animalBreed) {
 		if (!AnimalBreedManagerDaoImplHelper.validate(animalBreed)) {
 			if (!AnimalBreedManagerDaoImplHelper.isAssociated(animalBreed)) {
-				animalBreedRepository.save(animalBreed);
-			} else {
 				animalBreedRepository.save(AnimalBreedManagerDaoImplHelper.associate(animalBreed));
 			}
 		}
