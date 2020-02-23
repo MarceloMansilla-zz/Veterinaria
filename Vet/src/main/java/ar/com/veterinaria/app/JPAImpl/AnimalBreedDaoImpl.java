@@ -27,7 +27,7 @@ public class AnimalBreedDaoImpl implements AnimalBreedDao {
 	@Override
 	public AnimalBreed findById(int id) {
 		try {
-			return animalBreedRepository.findAnimalById(id);
+			return animalBreedRepository.findAnimalBreedById(id);
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
@@ -36,12 +36,15 @@ public class AnimalBreedDaoImpl implements AnimalBreedDao {
 
 	@Override
 	public void remove(int id) {
-		if (!AnimalManagerDaoImplHelper.isDeleted(id)) {
-			AnimalBreed animalBreed = animalBreedRepository.findAnimalById(id);
-			animalBreed.setId(id);
-			animalBreed.setDeleted(true);
-			animalBreedRepository.save(animalBreed);
-		} // animalRepository.delete(animal);
+		if (AnimalBreedManagerDaoImplHelper.existId(id)) {
+			if (!AnimalBreedManagerDaoImplHelper.isDeleted(id)) {
+				AnimalBreed animalBreed = animalBreedRepository.findAnimalBreedById(id);
+				animalBreed.setId(id);
+				animalBreed.setDeleted(true);
+				animalBreedRepository.save(animalBreed);
+			}
+		}
+
 	}
 
 	@Override

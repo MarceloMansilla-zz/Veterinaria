@@ -10,6 +10,7 @@ import ar.com.veterinaria.app.entities.AnimalBreed;
 import ar.com.veterinaria.app.entities.Breed;
 import ar.com.veterinaria.app.exception.duplicate.AnimalBreedDuplicatedException;
 import ar.com.veterinaria.app.exception.notFound.AnimalBreedNotFoundException;
+import ar.com.veterinaria.app.exception.notFound.AnimalNotFoundException;
 import ar.com.veterinaria.app.repository.AnimalBreedRepository;
 import ar.com.veterinaria.app.repository.AnimalRepository;
 import ar.com.veterinaria.app.repository.BreedRepository;
@@ -107,5 +108,12 @@ public class AnimalBreedManagerDaoImplHelper {
 		animalBreed.setAnimal(animal);
 		animalBreed.setBreed(breed);
 		return animalBreed;
+	}
+
+	public static boolean isDeleted(int id) {
+		if (animalBreedDaoImplHelper.deleted(animalBreedRepository, id)) {
+			throw new AnimalBreedNotFoundException(id);
+		}
+		return false;
 	}
 }
