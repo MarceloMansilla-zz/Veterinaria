@@ -77,23 +77,25 @@ public class AnimalBreedController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 	}
-	/*
-	 * @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	 * 
-	 * @ApiOperation(value = "Search a Animal by ID", response = AnimalBreed.class)
-	 * 
-	 * @ApiResponses({ @ApiResponse(code = 200, message = "OK"),
-	 * 
-	 * @ApiResponse(code = 403, message = "Operation is forbidden"),
-	 * 
-	 * @ApiResponse(code = 500, message = "Server error") }) public
-	 * ResponseEntity<AnimalBreed> getById(@PathVariable("id") int id) { try {
-	 * AnimalBreed animalBreed = animalBreedService.findById(id); if (animalBreed !=
-	 * null) { return ResponseEntity.status(HttpStatus.OK).body(animalBreed); } else
-	 * { return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); } } catch
-	 * (Exception e) { logger.error(e.getMessage(), e); return
-	 * ResponseEntity.status(HttpStatus.BAD_REQUEST).build(); } }
-	 */
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@ApiOperation(value = "Search a Animal by ID", response = AnimalBreed.class)
+	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),
+			@ApiResponse(code = 403, message = "Operation is forbidden"),
+			@ApiResponse(code = 500, message = "Server error") })
+	public ResponseEntity<AnimalBreed> getById(@PathVariable("id") int id) {
+		try {
+			AnimalBreed animalBreed = animalBreedService.findById(id);
+			if (animalBreed != null) {
+				return ResponseEntity.status(HttpStatus.OK).body(animalBreed);
+			} else {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		}
+	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ApiOperation(value = "Update a Animal by ID", response = AnimalBreed.class)

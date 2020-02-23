@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import ar.com.veterinaria.app.dao.AnimalBreedDao;
 import ar.com.veterinaria.app.entities.AnimalBreed;
 import ar.com.veterinaria.app.helper.daoImpl.AnimalBreedManagerDaoImplHelper;
-import ar.com.veterinaria.app.helper.daoImpl.AnimalManagerDaoImplHelper;
 import ar.com.veterinaria.app.repository.AnimalBreedRepository;
 
 @Repository
@@ -36,13 +35,11 @@ public class AnimalBreedDaoImpl implements AnimalBreedDao {
 
 	@Override
 	public void remove(int id) {
-		if (AnimalBreedManagerDaoImplHelper.existId(id)) {
-			if (!AnimalBreedManagerDaoImplHelper.isDeleted(id)) {
-				AnimalBreed animalBreed = animalBreedRepository.findAnimalBreedById(id);
-				animalBreed.setId(id);
-				animalBreed.setDeleted(true);
-				animalBreedRepository.save(animalBreed);
-			}
+		if (!AnimalBreedManagerDaoImplHelper.isDeleted(id)) {
+			AnimalBreed animalBreed = animalBreedRepository.findAnimalBreedById(id);
+			animalBreed.setId(id);
+			animalBreed.setDeleted(true);
+			animalBreedRepository.save(animalBreed);
 		}
 
 	}

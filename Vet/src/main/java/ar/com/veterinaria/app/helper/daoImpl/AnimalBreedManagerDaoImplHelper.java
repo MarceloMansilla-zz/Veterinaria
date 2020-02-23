@@ -58,10 +58,11 @@ public class AnimalBreedManagerDaoImplHelper {
 	}
 
 	public static boolean existId(int id) {
-		if (animalBreedDaoImplHelper.existId(animalBreedRepository, id)) {
-			return true;
+		if (!animalBreedDaoImplHelper.existId(animalBreedRepository, id)) {
+			throw new AnimalBreedNotFoundException(id);
 		}
-		throw new AnimalBreedNotFoundException(id);
+		return true;
+
 	}
 
 	public static boolean isAssociated(AnimalBreed animalBreed) {
