@@ -101,13 +101,16 @@ public class AnimalBreedManagerDaoImplHelper {
 		return animalBreed;
 	}
 
-	public static AnimalBreed update(AnimalBreed animalBreed) {
-		Animal animal = animalBreedDaoImplHelper.getAnimalByName(animalBreedRepository, animalBreed);
-		Breed breed = animalBreedDaoImplHelper.getBreedByName(animalBreedRepository, animalBreed);
-		animal.setName(animalBreed.getAnimal().getName());
-		breed.setBreed(animalBreed.getBreed().getBreed());
-		animalBreed.setAnimal(animal);
-		animalBreed.setBreed(breed);
+	public static AnimalBreed update(Integer id, AnimalBreed animalBreed) {
+		Animal aAnimal = animalDaoImplHelper.update(animalRepository, id, animalBreed.getAnimal());
+		aAnimal.setId(id);
+		aAnimal.setName(animalBreed.getAnimal().getName());
+		Breed bBreed = breedDaoImplHelper.update(breedRepository, id, animalBreed.getBreed());
+		bBreed.setId(id);
+		bBreed.setBreed(animalBreed.getBreed().getBreed());
+		animalBreed.setId(id);
+		animalBreed.setAnimal(aAnimal);
+		animalBreed.setBreed(bBreed);
 		return animalBreed;
 	}
 
