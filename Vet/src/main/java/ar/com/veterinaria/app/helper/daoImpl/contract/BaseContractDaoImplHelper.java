@@ -17,5 +17,5 @@ public interface BaseContractDaoImplHelper<T> {
 
 	T findByName(JpaRepository<T, Integer> repository, String t);
 	
-	T update(JpaRepository<T, Integer> repository, T t);
+	T update(JpaRepository<T, Integer> repository, Integer id, T t);
 }

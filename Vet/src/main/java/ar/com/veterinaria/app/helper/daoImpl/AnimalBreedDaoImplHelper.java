@@ -162,7 +162,7 @@ public class AnimalBreedDaoImplHelper implements AnimalBreedContractDaoImplHelpe
 	}
 
 	@Override
-	public AnimalBreed update(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed t) {
+	public AnimalBreed update(JpaRepository<AnimalBreed, Integer> repository, Integer id, AnimalBreed name) {
 		// TODO Auto-generated method stub
 		return null;
 	}

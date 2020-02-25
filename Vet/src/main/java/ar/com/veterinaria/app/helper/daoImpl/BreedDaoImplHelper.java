@@ -94,7 +94,16 @@ public class BreedDaoImplHelper implements BreedContractDaoImplHelper {
 	}
 
 	@Override
-	public Breed update(JpaRepository<Breed, Integer> repository, Breed t) {
+	public Breed update(JpaRepository<Breed, Integer> repository, Integer id, Breed name) {
+		List<Breed> result = repository.findAll();
+		int ini = 0;
+		while (ini < result.size()) {
+			Breed aBreed = result.get(ini);
+			if (aBreed.getId().equals(id)) {
+				return aBreed;
+			}
+			ini++;
+		}
 		return null;
 	}
 }

@@ -56,8 +56,7 @@ public class BreedDaoImpl implements BreedDao {
 	@Override
 	public Breed update(int id, Breed breed) {
 		if (BreedManagerDaoImplHelper.existId(id)) {
-			breed.setId(id);
-			breedRepository.save(breed);
+			breedRepository.save(BreedManagerDaoImplHelper.updateBreed(id, breed));
 			return breed;
 		}
 		return null;

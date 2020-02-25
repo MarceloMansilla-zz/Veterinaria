@@ -36,10 +36,10 @@ public class BreedManagerDaoImplHelper {
 
 	public static boolean existId(Integer id) {
 		if (breedDaoImplHelper.existId(breedRepository, id)) {
-			return true;			
+			return true;
 		}
 		throw new BreedNotFoundException(id);
-		
+
 	}
 
 	public static boolean isDeleted(Integer id) {
@@ -52,14 +52,20 @@ public class BreedManagerDaoImplHelper {
 	public static List<Map<String, Object>> findAll() {
 		return breedDaoImplHelper.findAll(breedRepository);
 	}
-	
+
 	public static Breed findBreedByName(String t) {
 		Breed breed = breedDaoImplHelper.findByName(breedRepository, t);
 		if (breed != null) {
 			return breed;
 		}
 		throw new BreedNotFoundException(t);
-		
+	}
+
+	public static Breed updateBreed(Integer id, Breed breed) {
+		Breed bBreed = breedDaoImplHelper.update(breedRepository, id, breed);
+		bBreed.setId(id);
+		bBreed.setBreed(breed.getBreed());
+		return bBreed;
 	}
 
 }
