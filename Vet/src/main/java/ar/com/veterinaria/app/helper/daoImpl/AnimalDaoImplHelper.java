@@ -92,4 +92,10 @@ public class AnimalDaoImplHelper implements AnimalContractDaoImplHelper {
 		}
 		return null;
 	}
+
+	@Override
+	public Animal update(JpaRepository<Animal, Integer> repository, Animal t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

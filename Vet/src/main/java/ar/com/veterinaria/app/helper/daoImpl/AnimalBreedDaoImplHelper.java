@@ -54,12 +54,14 @@ public class AnimalBreedDaoImplHelper implements AnimalBreedContractDaoImplHelpe
 		int ini = 0;
 		while (ini < result.size()) {
 			AnimalBreed animalBreed = result.get(ini);
-			if (animalBreed.getId().equals(id) && animalBreed.isDeleted()) {
-				return true;
+			if (animalBreed.getId().equals(id)) {
+				if (!animalBreed.isDeleted()) {
+					return false;
+				}
 			}
 			ini++;
 		}
-		return false;
+		return true;
 	}
 
 	@Override
@@ -156,6 +158,12 @@ public class AnimalBreedDaoImplHelper implements AnimalBreedContractDaoImplHelpe
 			}
 			ini++;
 		}
+		return null;
+	}
+
+	@Override
+	public AnimalBreed update(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed t) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

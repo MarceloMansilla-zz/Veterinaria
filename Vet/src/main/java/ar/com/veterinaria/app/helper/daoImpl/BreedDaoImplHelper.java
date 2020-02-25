@@ -92,4 +92,9 @@ public class BreedDaoImplHelper implements BreedContractDaoImplHelper {
 		}
 		return null;
 	}
+
+	@Override
+	public Breed update(JpaRepository<Breed, Integer> repository, Breed t) {
+		return null;
+	}
 }
