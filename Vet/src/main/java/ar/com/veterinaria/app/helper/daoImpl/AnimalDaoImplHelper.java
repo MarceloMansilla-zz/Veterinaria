@@ -94,8 +94,16 @@ public class AnimalDaoImplHelper implements AnimalContractDaoImplHelper {
 	}
 
 	@Override
-	public Animal update(JpaRepository<Animal, Integer> repository, Integer id, Animal name) {
-		// TODO Auto-generated method stub
+	public Animal update(JpaRepository<Animal, Integer> repository, Integer id, Animal animal) {
+		List<Animal> result = repository.findAll();
+		int ini = 0;
+		while (ini < result.size()) {
+			Animal aAnimal = result.get(ini);
+			if (aAnimal.getId().equals(id)) {
+				return aAnimal;
+			}
+			ini++;
+		}
 		return null;
 	}
 }

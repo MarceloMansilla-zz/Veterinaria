@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.com.veterinaria.app.entities.Animal;
+import ar.com.veterinaria.app.entities.Breed;
 import ar.com.veterinaria.app.exception.duplicate.AnimalDuplicatedException;
 import ar.com.veterinaria.app.exception.notFound.AnimalNotFoundException;
 import ar.com.veterinaria.app.repository.AnimalRepository;
@@ -61,5 +62,12 @@ public class AnimalManagerDaoImplHelper {
 			return animal;
 		}
 		throw new AnimalNotFoundException(name);
+	}
+
+	public static Animal updateBreed(Integer id, Animal animal) {
+		Animal aAnimal = animalDaoImplHelper.update(animalRepository, id, animal);
+		aAnimal.setId(id);
+		aAnimal.setName(animal.getName());
+		return aAnimal;
 	}
 }
