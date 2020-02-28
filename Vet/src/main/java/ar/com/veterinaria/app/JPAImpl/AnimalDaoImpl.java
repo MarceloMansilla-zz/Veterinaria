@@ -40,7 +40,7 @@ public class AnimalDaoImpl implements AnimalDao {
 			animal.setId(id);
 			animal.setDeleted(true);
 			animalRepository.save(animal);
-		} // animalRepository.delete(animal);
+		}
 	}
 
 	@Override

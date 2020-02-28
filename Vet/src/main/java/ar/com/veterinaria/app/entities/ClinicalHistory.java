@@ -18,9 +18,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class ClinicalHistory implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -5269292611778051285L;
 
 	@Id

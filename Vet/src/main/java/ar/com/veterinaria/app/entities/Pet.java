@@ -22,9 +22,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class Pet implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2710406182764591314L;
 
 	@Id
@@ -63,18 +60,6 @@ public class Pet implements Serializable {
 		this.size = size;
 		this.animalBreed = animalBreed;
 		this.clinicalHistory = clinicalHistory;
-	}
-
-	public static Pet form(Integer id, String namePet, String birthday, String size, AnimalBreed animalBreed,
-			ClinicalHistory clinicalHistory) {
-		Pet pet = new Pet();
-		pet.setId(id);
-		pet.setName(namePet);
-		pet.setBirthday(birthday);
-		pet.setSize(size);
-		pet.setAnimalBreed(animalBreed);
-		pet.setClinicalHistory(clinicalHistory);
-		return pet;
 	}
 
 	public Integer getId() {

@@ -2,14 +2,10 @@ package ar.com.veterinaria.app.helper.daoImpl;
 
 import java.util.List;
 import java.util.Map;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import ar.com.veterinaria.app.entities.Animal;
-import ar.com.veterinaria.app.entities.Breed;
 import ar.com.veterinaria.app.exception.duplicate.AnimalDuplicatedException;
 import ar.com.veterinaria.app.exception.notFound.AnimalNotFoundException;
 import ar.com.veterinaria.app.repository.AnimalRepository;

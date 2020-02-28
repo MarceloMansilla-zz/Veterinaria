@@ -53,14 +53,6 @@ public class AnimalBreed implements Serializable {
 		this.animal = animal;
 	}
 
-	public static AnimalBreed form(Integer id, Breed breed, Animal animal) {
-		AnimalBreed animalBreed = new AnimalBreed();
-		animalBreed.setId(id);
-		animalBreed.setBreed(breed);
-		animalBreed.setAnimal(animal);
-		return animalBreed;
-	}
-
 	public Integer getId() {
 		return id;
 	}

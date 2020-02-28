@@ -66,7 +66,6 @@ public class AnimalBreedManagerDaoImplHelper {
 
 	public static boolean isAssociated(AnimalBreed animalBreed) {
 		if (!animalBreedDaoImplHelper.isDuplicated(animalBreedRepository, animalBreed)) {
-			System.out.println("Is-Association");
 			return false;
 		}
 		return true;
@@ -74,15 +73,12 @@ public class AnimalBreedManagerDaoImplHelper {
 
 	public static AnimalBreed associate(AnimalBreed animalBreed) {
 
-		// CHECK ASSOCIATION ANIMAL AND BREED ALREADY EXIST IN DB BUT THE
-		// ASSOCIATION WAS NOT DONE
 		Animal animal = animalBreedDaoImplHelper.findAnimalByName(animalBreedRepository, animalBreed);
 		Breed breed = animalBreedDaoImplHelper.findBreedByName(animalBreedRepository, animalBreed);
 
 		if (animal == null && breed == null) {
 			if ((!animalDaoImplHelper.isDuplicated(animalRepository, animalBreed.getAnimal())
 					&& (!breedDaoImplHelper.isDuplicated(breedRepository, animalBreed.getBreed())))) {
-				System.out.println("Association 0");
 				animal = new Animal();
 				breed = new Breed();
 				breed.setBreed(animalBreed.getBreed().getBreed());
@@ -99,7 +95,6 @@ public class AnimalBreedManagerDaoImplHelper {
 			}
 
 		} else if (animal != null && breed == null) {
-			System.out.println("Association 1");
 			breed = new Breed();
 			breed.setBreed(animalBreed.getBreed().getBreed());
 			if ((animalDaoImplHelper.isDuplicated(animalRepository, animalBreed.getAnimal()))) {
@@ -109,7 +104,6 @@ public class AnimalBreedManagerDaoImplHelper {
 			}
 
 		} else if (animal == null && breed != null) {
-			System.out.println("Association 2");
 			animal = new Animal();
 			animal.setName(animalBreed.getAnimal().getName());
 			if (breedDaoImplHelper.isDuplicated(breedRepository, animalBreed.getBreed())) {
@@ -129,8 +123,6 @@ public class AnimalBreedManagerDaoImplHelper {
 		Breed bBreed = breedDaoImplHelper.update(breedRepository, id, animalBreed.getBreed());
 		bBreed.setId(id);
 		bBreed.setBreed(animalBreed.getBreed().getBreed());
-		// AnimalBreed aAnimalBreed =
-		// animalBreedDaoImplHelper.update(animalBreedRepository, id, animalBreed);
 		animalBreed.setId(id);
 		animalBreed.setAnimal(aAnimal);
 		animalBreed.setBreed(bBreed);

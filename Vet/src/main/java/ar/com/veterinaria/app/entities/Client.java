@@ -31,7 +31,6 @@ public class Client extends Person implements Serializable {
 
 	public Client() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Client(Integer idPerson, String name, String surname, Integer dni, String birthday, Integer telephone,

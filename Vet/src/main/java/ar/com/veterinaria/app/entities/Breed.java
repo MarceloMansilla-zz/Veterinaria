@@ -22,9 +22,7 @@ public class Breed implements Serializable {
 	public static final Logger logger = LoggerFactory.getLogger(Breed.class);
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // generator = "CAR_SEQ",
-	// @SequenceGenerator(name = "ID_SEQ", allocationSize = 1) // sequenceName =
-	// "ID_SEQ"
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idBreed", unique = true, nullable = false)
 	@JsonIgnore
 	private Integer id;

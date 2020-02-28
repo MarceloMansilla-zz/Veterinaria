@@ -44,13 +44,6 @@ public class Animal implements Serializable {
 		super();
 	}
 
-	public static Animal form(Integer id, String name) {
-		Animal animal = new Animal();
-		animal.setId(id);
-		animal.setName(name);
-		return animal;
-	}
-
 	public Animal(String name, boolean deleted) {
 		super();
 		this.name = name;

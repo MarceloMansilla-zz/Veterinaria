@@ -46,10 +46,8 @@ public class AnimalBreedDaoImpl implements AnimalBreedDao {
 
 	@Override
 	public AnimalBreed add(AnimalBreed animalBreed) {
-		if (!AnimalBreedManagerDaoImplHelper.validate(animalBreed)) {
-			if (!AnimalBreedManagerDaoImplHelper.isAssociated(animalBreed)) {
-				animalBreedRepository.save(AnimalBreedManagerDaoImplHelper.associate(animalBreed));
-			}
+		if (!AnimalBreedManagerDaoImplHelper.isAssociated(animalBreed)) {
+			animalBreedRepository.save(AnimalBreedManagerDaoImplHelper.associate(animalBreed));
 		}
 		return animalBreed;
 	}

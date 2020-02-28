@@ -35,7 +35,6 @@ public class User extends Person implements Serializable {
 
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getId() {
