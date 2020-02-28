@@ -64,7 +64,7 @@ public class AnimalManagerDaoImplHelper {
 		throw new AnimalNotFoundException(name);
 	}
 
-	public static Animal updateBreed(Integer id, Animal animal) {
+	public static Animal updateAnimal(Integer id, Animal animal) {
 		Animal aAnimal = animalDaoImplHelper.update(animalRepository, id, animal);
 		aAnimal.setId(id);
 		aAnimal.setName(animal.getName());

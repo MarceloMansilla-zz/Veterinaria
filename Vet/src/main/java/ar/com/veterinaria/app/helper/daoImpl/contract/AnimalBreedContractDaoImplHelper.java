@@ -8,13 +8,9 @@ import ar.com.veterinaria.app.entities.Breed;
 
 public interface AnimalBreedContractDaoImplHelper extends BaseContractDaoImplHelper<AnimalBreed> {
 
-	Breed getBreedByName(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed name);
-
-	Animal getAnimalByName(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed name);
-
 	Breed findBreedByName(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed name);
 
 	Animal findAnimalByName(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed name);
-	
+
 	AnimalBreed findAnimalBreedByName(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed name);
 }

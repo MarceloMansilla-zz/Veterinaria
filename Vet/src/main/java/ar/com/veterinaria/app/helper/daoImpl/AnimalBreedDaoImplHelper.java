@@ -84,34 +84,6 @@ public class AnimalBreedDaoImplHelper implements AnimalBreedContractDaoImplHelpe
 		return null;
 	}
 
-	@Override
-	public Breed getBreedByName(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed breedName) {
-		List<AnimalBreed> result = repository.findAll();
-		int ini = 0;
-		while (ini < result.size()) {
-			AnimalBreed animalBreed = result.get(ini);
-			if (animalBreed.getBreed().getBreed().equals(breedName.getBreed().getBreed())) {
-				return animalBreed.getBreed();
-			}
-			ini++;
-		}
-		return new Breed(breedName.getBreed().getBreed(), false);
-	}
-
-	@Override
-	public Animal getAnimalByName(JpaRepository<AnimalBreed, Integer> repository, AnimalBreed animalName) {
-		List<AnimalBreed> result = repository.findAll();
-		int ini = 0;
-		while (ini < result.size()) {
-			AnimalBreed animalBreed = result.get(ini);
-			if (animalBreed.getAnimal().getName().equals(animalName.getAnimal().getName())) {
-				return animalBreed.getAnimal();
-			}
-			ini++;
-		}
-		return new Animal(animalName.getAnimal().getName(), false);
-	}
-
 	@Deprecated
 	@Override
 	public AnimalBreed findByName(JpaRepository<AnimalBreed, Integer> repository, String animalBreed) {
@@ -125,7 +97,7 @@ public class AnimalBreedDaoImplHelper implements AnimalBreedContractDaoImplHelpe
 		while (ini < result.size()) {
 			AnimalBreed aAnimalBreed = result.get(ini);
 			if (aAnimalBreed.getBreed().getBreed().equals(breed.getBreed().getBreed())) {
-				return breed.getBreed();
+				return aAnimalBreed.getBreed();
 			}
 			ini++;
 		}
@@ -139,7 +111,7 @@ public class AnimalBreedDaoImplHelper implements AnimalBreedContractDaoImplHelpe
 		while (ini < result.size()) {
 			AnimalBreed aAnimalBreed = result.get(ini);
 			if (aAnimalBreed.getAnimal().getName().equals(animal.getAnimal().getName())) {
-				return animal.getAnimal();
+				return aAnimalBreed.getAnimal();
 			}
 			ini++;
 		}
@@ -162,8 +134,16 @@ public class AnimalBreedDaoImplHelper implements AnimalBreedContractDaoImplHelpe
 	}
 
 	@Override
-	public AnimalBreed update(JpaRepository<AnimalBreed, Integer> repository, Integer id, AnimalBreed name) {
-		// TODO Auto-generated method stub
+	public AnimalBreed update(JpaRepository<AnimalBreed, Integer> repository, Integer id, AnimalBreed animalBreed) {
+		List<AnimalBreed> result = repository.findAll();
+		int ini = 0;
+		while (ini < result.size()) {
+			AnimalBreed aAnimalBreed = result.get(ini);
+			if (aAnimalBreed.getId().equals(id)) {
+				return aAnimalBreed;
+			}
+			ini++;
+		}
 		return null;
 	}
 
