@@ -74,8 +74,8 @@ public class AnimalBreedManagerDaoImplHelper {
 
 	public static AnimalBreed associate(AnimalBreed animalBreed) {
 
-		// CHECK ASSOCIATION DUPLICATED ANIMAL AND BREED IN DB BEFORE DOING THE
-		// ASSOCIATION
+		// CHECK ASSOCIATION ANIMAL AND BREED ALREADY EXIST IN DB BUT THE
+		// ASSOCIATION WAS NOT DONE
 		Animal animal = animalBreedDaoImplHelper.findAnimalByName(animalBreedRepository, animalBreed);
 		Breed breed = animalBreedDaoImplHelper.findBreedByName(animalBreedRepository, animalBreed);
 
@@ -89,6 +89,13 @@ public class AnimalBreedManagerDaoImplHelper {
 				animal.setName(animalBreed.getAnimal().getName());
 				animalBreed.setBreed(breed);
 				animalBreed.setAnimal(animal);
+			} else if ((animalDaoImplHelper.isDuplicated(animalRepository, animalBreed.getAnimal())
+					&& (breedDaoImplHelper.isDuplicated(breedRepository, animalBreed.getBreed())))) {
+				Animal aAnimalFound = animalDaoImplHelper.findByName(animalRepository,
+						animalBreed.getAnimal().getName());
+				Breed bBreedFound = breedDaoImplHelper.findByName(breedRepository, animalBreed.getBreed().getBreed());
+				animalBreed.setAnimal(aAnimalFound);
+				animalBreed.setBreed(bBreedFound);
 			}
 
 		} else if (animal != null && breed == null) {
