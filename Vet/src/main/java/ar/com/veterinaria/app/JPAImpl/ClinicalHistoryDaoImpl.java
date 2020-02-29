@@ -1,0 +1,84 @@
+package ar.com.veterinaria.app.JPAImpl;
+
+import java.util.List;
+import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import ar.com.veterinaria.app.dao.ClinicalHistoryDao;
+import ar.com.veterinaria.app.entities.ClinicalHistory;
+import ar.com.veterinaria.app.helper.daoImpl.BreedManagerDaoImplHelper;
+import ar.com.veterinaria.app.helper.daoImpl.ClinicalHistoryManagerDaoImplHelper;
+import ar.com.veterinaria.app.repository.ClinicalHistoryRepository;
+
+@Repository
+public class ClinicalHistoryDaoImpl implements ClinicalHistoryDao {
+
+	private static final Logger logger = LoggerFactory.getLogger(ClinicalHistoryDaoImpl.class);
+
+	@Autowired
+	private ClinicalHistoryRepository clinicalHistoryRepository;
+
+	public ClinicalHistoryDaoImpl() {
+		super();
+	}
+
+	@Override
+	public ClinicalHistory findById(int id) {
+		try {
+			return clinicalHistoryRepository.findClinicalHistoryById(id);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+		}
+		return null;
+	}
+
+	@Override
+	public void remove(int id) {
+		if (!ClinicalHistoryManagerDaoImplHelper.isDeleted(id)) {
+			ClinicalHistory clinicalHistory = clinicalHistoryRepository.findClinicalHistoryById(id);
+			clinicalHistory.setId(id);
+			clinicalHistory.setDeleted(true);
+			clinicalHistoryRepository.save(clinicalHistory);
+		} // falta validar id
+	}
+
+	@Override
+	public ClinicalHistory add(ClinicalHistory clinicalHistory) {
+		try {
+			clinicalHistoryRepository.save(clinicalHistory);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+		}
+		return clinicalHistory;
+	}
+
+	@Override
+	public ClinicalHistory update(int id, ClinicalHistory clinicalHistory) {
+		if (ClinicalHistoryManagerDaoImplHelper.existId(id)) {
+			clinicalHistoryRepository.save(ClinicalHistoryManagerDaoImplHelper.updateBreed(id, clinicalHistory));
+			return clinicalHistory;
+		}
+		return null;
+	}
+
+	@Override
+	public List<Map<String, Object>> findAll() {
+		return BreedManagerDaoImplHelper.findAll();
+	}
+
+	@Override
+	public boolean exist(ClinicalHistory clinicalHistory) {
+		if (!ClinicalHistoryManagerDaoImplHelper.validate(clinicalHistory)) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public ClinicalHistory findClinicalHistoryByName(String breed) {
+		return ClinicalHistoryManagerDaoImplHelper.findBreedByName(breed);
+	}
+
+}

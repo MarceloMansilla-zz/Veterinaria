@@ -26,7 +26,45 @@ public class ClinicalHistory implements Serializable {
 	@JsonIgnore
 	private Integer id;
 
-	@Column(name = "numberClinicalHistory", nullable = true, length = 50)
-	private String numberClinicalHistory;
+	@Column(name = "clinicalHistory", nullable = true, length = 50)
+	private String clinicalHistory;
+
+	@Column(name = "deleted", length = 10)
+	@JsonIgnore
+	private boolean deleted;
+
+	public ClinicalHistory() {
+		super();
+	}
+
+	public ClinicalHistory(Integer id, String numberClinicalHistory) {
+		super();
+		this.id = id;
+		this.clinicalHistory = numberClinicalHistory;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getClinicalHistory() {
+		return clinicalHistory;
+	}
+
+	public void setClinicalHistory(String numberClinicalHistory) {
+		this.clinicalHistory = numberClinicalHistory;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
 
 }
