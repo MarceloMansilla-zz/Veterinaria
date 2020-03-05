@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ar.com.veterinaria.app.dao.ClinicalHistoryDao;
 import ar.com.veterinaria.app.entities.ClinicalHistory;
-import ar.com.veterinaria.app.helper.daoImpl.BreedManagerDaoImplHelper;
 import ar.com.veterinaria.app.helper.daoImpl.ClinicalHistoryManagerDaoImplHelper;
 import ar.com.veterinaria.app.repository.ClinicalHistoryRepository;
 
@@ -57,7 +56,8 @@ public class ClinicalHistoryDaoImpl implements ClinicalHistoryDao {
 	@Override
 	public ClinicalHistory update(int id, ClinicalHistory clinicalHistory) {
 		if (ClinicalHistoryManagerDaoImplHelper.existId(id)) {
-			clinicalHistoryRepository.save(ClinicalHistoryManagerDaoImplHelper.updateBreed(id, clinicalHistory));
+			clinicalHistoryRepository
+					.save(ClinicalHistoryManagerDaoImplHelper.updateClinicalHistory(id, clinicalHistory));
 			return clinicalHistory;
 		}
 		return null;
@@ -65,7 +65,7 @@ public class ClinicalHistoryDaoImpl implements ClinicalHistoryDao {
 
 	@Override
 	public List<Map<String, Object>> findAll() {
-		return BreedManagerDaoImplHelper.findAll();
+		return ClinicalHistoryManagerDaoImplHelper.findAll();
 	}
 
 	@Override
@@ -78,7 +78,7 @@ public class ClinicalHistoryDaoImpl implements ClinicalHistoryDao {
 
 	@Override
 	public ClinicalHistory findClinicalHistoryByName(String breed) {
-		return ClinicalHistoryManagerDaoImplHelper.findBreedByName(breed);
+		return ClinicalHistoryManagerDaoImplHelper.findClinicalHistoryByName(breed);
 	}
 
 }

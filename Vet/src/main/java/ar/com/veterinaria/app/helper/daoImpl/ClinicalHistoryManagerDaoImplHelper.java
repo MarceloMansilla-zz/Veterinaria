@@ -2,13 +2,13 @@ package ar.com.veterinaria.app.helper.daoImpl;
 
 import java.util.List;
 import java.util.Map;
-
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ar.com.veterinaria.app.entities.ClinicalHistory;
-import ar.com.veterinaria.app.exception.duplicate.AnimalDuplicatedException;
+import ar.com.veterinaria.app.exception.ClinicalHistoryException;
 import ar.com.veterinaria.app.exception.notFound.BreedNotFoundException;
+import ar.com.veterinaria.app.exception.notFound.ClinicalHistoryNotFoundException;
 import ar.com.veterinaria.app.repository.ClinicalHistoryRepository;
 
 @Service
@@ -30,7 +30,7 @@ public class ClinicalHistoryManagerDaoImplHelper {
 
 	public static boolean validate(ClinicalHistory clinicalHistory) {
 		if (clinicalHistoryDaoImplHelper.isDuplicated(clinicalHistoryRepository, clinicalHistory)) {
-			throw new AnimalDuplicatedException(clinicalHistory.getClinicalHistory());
+			throw new ClinicalHistoryException(clinicalHistory.getClinicalHistory());
 		}
 		return false;
 	}
@@ -39,13 +39,13 @@ public class ClinicalHistoryManagerDaoImplHelper {
 		if (clinicalHistoryDaoImplHelper.existId(clinicalHistoryRepository, id)) {
 			return true;
 		}
-		throw new BreedNotFoundException(id);
+		throw new ClinicalHistoryNotFoundException(id);
 
 	}
 
 	public static boolean isDeleted(Integer id) {
 		if (clinicalHistoryDaoImplHelper.deleted(clinicalHistoryRepository, id)) {
-			throw new BreedNotFoundException(id);
+			throw new ClinicalHistoryNotFoundException(id);
 		}
 		return false;
 	}
@@ -54,7 +54,7 @@ public class ClinicalHistoryManagerDaoImplHelper {
 		return clinicalHistoryDaoImplHelper.findAll(clinicalHistoryRepository);
 	}
 
-	public static ClinicalHistory findBreedByName(String t) {
+	public static ClinicalHistory findClinicalHistoryByName(String t) {
 		ClinicalHistory clinicalHistory = clinicalHistoryDaoImplHelper.findByName(clinicalHistoryRepository, t);
 		if (clinicalHistory != null) {
 			return clinicalHistory;
@@ -62,7 +62,7 @@ public class ClinicalHistoryManagerDaoImplHelper {
 		throw new BreedNotFoundException(t);
 	}
 
-	public static ClinicalHistory updateBreed(Integer id, ClinicalHistory clinicalHistory) {
+	public static ClinicalHistory updateClinicalHistory(Integer id, ClinicalHistory clinicalHistory) {
 		ClinicalHistory cClinicalHistory = clinicalHistoryDaoImplHelper.update(clinicalHistoryRepository, id,
 				clinicalHistory);
 		cClinicalHistory.setId(id);
