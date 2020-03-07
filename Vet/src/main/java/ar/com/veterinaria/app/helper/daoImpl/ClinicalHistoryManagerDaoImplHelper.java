@@ -44,10 +44,11 @@ public class ClinicalHistoryManagerDaoImplHelper {
 	}
 
 	public static boolean isDeleted(Integer id) {
-		if (clinicalHistoryDaoImplHelper.deleted(clinicalHistoryRepository, id)) {
-			throw new ClinicalHistoryNotFoundException(id);
+		if (!clinicalHistoryDaoImplHelper.deleted(clinicalHistoryRepository, id)) {
+			return false;
 		}
-		return false;
+		throw new ClinicalHistoryNotFoundException(id);
+
 	}
 
 	public static List<Map<String, Object>> findAll() {

@@ -59,9 +59,12 @@ public class ClinicalHistoryDaoImpl implements ClinicalHistoryDao {
 	@Override
 	public ClinicalHistory update(int id, ClinicalHistory clinicalHistory) {
 		if (ClinicalHistoryManagerDaoImplHelper.existId(id)) {
-			clinicalHistoryRepository
-					.save(ClinicalHistoryManagerDaoImplHelper.updateClinicalHistory(id, clinicalHistory));
-			return clinicalHistory;
+			if (!ClinicalHistoryManagerDaoImplHelper.isDeleted(id)) {
+				clinicalHistoryRepository
+						.save(ClinicalHistoryManagerDaoImplHelper.updateClinicalHistory(id, clinicalHistory));
+				return clinicalHistory;
+			}
+
 		}
 		return null;
 	}
