@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ar.com.veterinaria.app.dao.ClinicalHistoryDao;
 import ar.com.veterinaria.app.entities.ClinicalHistory;
+import ar.com.veterinaria.app.exception.notFound.ClinicalHistoryNotFoundException;
 import ar.com.veterinaria.app.helper.daoImpl.ClinicalHistoryManagerDaoImplHelper;
 import ar.com.veterinaria.app.repository.ClinicalHistoryRepository;
 
@@ -26,11 +27,14 @@ public class ClinicalHistoryDaoImpl implements ClinicalHistoryDao {
 	@Override
 	public ClinicalHistory findById(int id) {
 		try {
-			return clinicalHistoryRepository.findClinicalHistoryById(id);
+			if (!ClinicalHistoryManagerDaoImplHelper.isDeleted(id)) {
+				return clinicalHistoryRepository.findClinicalHistoryById(id);
+			}
 		} catch (Exception e) {
+
 			logger.error(e.getMessage(), e);
 		}
-		return null;
+		throw new ClinicalHistoryNotFoundException(id);
 	}
 
 	@Override
