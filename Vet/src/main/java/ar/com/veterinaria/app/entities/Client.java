@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @Table(name = "Client")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class Client extends Person implements Serializable {
+public class Client extends Person implements Serializable {  
 
 	private static final long serialVersionUID = -7312020058595709047L;
 
@@ -33,17 +33,17 @@ public class Client extends Person implements Serializable {
 		super();
 	}
 
-	public Client(Integer idPerson, String name, String surname, Integer dni, String birthday, Integer telephone,
-			Integer cellphone, Address address, Integer idClient) {
-		super(idPerson, name, surname, dni, birthday, telephone, cellphone, address);
-		this.idClient = idClient;
-	}
-
-	public Client(Integer idPerson, String name, String surname, Integer dni, String birthday, Integer cellphone,
-			Address address, Integer idClient) {
-		super(idPerson, name, surname, dni, birthday, cellphone, address);
-		this.idClient = idClient;
-	}
+	/*
+	 * public Client(Integer idPerson, String name, String surname, Integer dni,
+	 * String birthday, Integer telephone, Integer cellphone, Address address,
+	 * Integer idClient) { super(idPerson, name, surname, dni, birthday, telephone,
+	 * cellphone, address); this.idClient = idClient; }
+	 * 
+	 * public Client(Integer idPerson, String name, String surname, Integer dni,
+	 * String birthday, Integer cellphone, Address address, Integer idClient) {
+	 * super(idPerson, name, surname, dni, birthday, cellphone, address);
+	 * this.idClient = idClient; }
+	 */
 
 	public Integer getIdClient() {
 		return idClient;

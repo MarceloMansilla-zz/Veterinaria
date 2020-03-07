@@ -13,11 +13,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-@Entity
-@Table(name = "User")
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(Include.NON_NULL)
-public class User extends Person implements Serializable {
+//@Entity
+//@Table(name = "User")
+//@JsonIgnoreProperties(ignoreUnknown = true)
+//@JsonInclude(Include.NON_NULL)
+public class User implements Serializable { //extends Person 
 
 	private static final long serialVersionUID = 3598761605336012017L;
 

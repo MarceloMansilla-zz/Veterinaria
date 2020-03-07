@@ -16,14 +16,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-@Entity
+/*@Entity
 @Table(name = "petclient")
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(Include.NON_NULL)
+@JsonInclude(Include.NON_NULL)*/
 public class PetClient implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	@Id
+	/*@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "idPetClient", unique = true, nullable = false)
 	@JsonIgnore
@@ -70,6 +70,6 @@ public class PetClient implements Serializable {
 
 	public void setPet(Pet pet) {
 		Pet = pet;
-	}
+	}*/
 
 }

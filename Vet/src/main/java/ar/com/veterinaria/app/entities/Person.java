@@ -3,6 +3,7 @@ package ar.com.veterinaria.app.entities;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -23,18 +26,22 @@ import javax.persistence.InheritanceType;
 //@NoArgsConstructor
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@Table(name = "Person")
+@Table(name = "person")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "person_type")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class Person implements Serializable {
+public abstract class Person implements Serializable {
 
 	private static final long serialVersionUID = -1152319083414061470L;
 
 	// @TableGenerator(name = "PERSON_GEN", table = "ID_PERSON", pkColumnName =
 	// "idPerson", valueColumnName = "GEN_VAL", allocationSize = 1)
 
-	@GeneratedValue(strategy = GenerationType.TABLE) // , generator = "PERSON_GEN")
+	// @GeneratedValue(strategy = GenerationType.TABLE) // , generator =
+	// "PERSON_GEN")
+	@TableGenerator(name = "person_gen", table = "person", pkColumnName = "idPerson", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "person_gen")
 	@Column(name = "idPerson", unique = true, nullable = false)
 	@JsonIgnore
 	@Id

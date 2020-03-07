@@ -16,10 +16,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-@Entity
+/*@Entity
 @Table(name = "pet")
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(Include.NON_NULL)
+@JsonInclude(Include.NON_NULL)*/
 public class Pet implements Serializable {
 
 	private static final long serialVersionUID = 2710406182764591314L;
