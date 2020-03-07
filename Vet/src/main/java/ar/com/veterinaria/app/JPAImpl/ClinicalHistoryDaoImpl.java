@@ -31,7 +31,6 @@ public class ClinicalHistoryDaoImpl implements ClinicalHistoryDao {
 				return clinicalHistoryRepository.findClinicalHistoryById(id);
 			}
 		} catch (Exception e) {
-
 			logger.error(e.getMessage(), e);
 		}
 		throw new ClinicalHistoryNotFoundException(id);
