@@ -50,6 +50,10 @@ public class Person implements Serializable {
 	@Column(name = "cellphone", nullable = false, length = 15)
 	protected Integer cellphone;
 
+	@Column(name = "deleted", length = 10)
+	@JsonIgnore
+	private boolean deleted;
+
 	@OneToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "idAddress", nullable = true)
 	protected Address address;
@@ -145,6 +149,14 @@ public class Person implements Serializable {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 }

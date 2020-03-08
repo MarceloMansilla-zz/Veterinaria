@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
 @PrimaryKeyJoinColumn(name = "idPerson")
-public class Client extends Person implements Serializable {
+public class Cliente extends Person implements Serializable {
 
 	private static final long serialVersionUID = -7312020058595709047L;
 
@@ -28,17 +28,17 @@ public class Client extends Person implements Serializable {
 	@Id
 	private Integer idClient;
 
-	public Client() {
+	public Cliente() {
 		super();
 	}
 
-	public Client(Integer idPerson, String name, String surname, Integer dni, String birthday, Integer telephone,
+	public Cliente(Integer idPerson, String name, String surname, Integer dni, String birthday, Integer telephone,
 			Integer cellphone, Address address, Integer idClient) {
 		super(idPerson, name, surname, dni, birthday, telephone, cellphone, address);
 		this.idClient = idClient;
 	}
 
-	public Client(Integer idPerson, String name, String surname, Integer dni, String birthday, Integer cellphone,
+	public Cliente(Integer idPerson, String name, String surname, Integer dni, String birthday, Integer cellphone,
 			Address address, Integer idClient) {
 		super(idPerson, name, surname, dni, birthday, cellphone, address);
 		this.idClient = idClient;
