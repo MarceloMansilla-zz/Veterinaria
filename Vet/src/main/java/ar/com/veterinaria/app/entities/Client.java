@@ -5,45 +5,44 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-/*@PrimaryKeyJoinColumn(name = "idPerson")
-@DiscriminatorValue("idPerson")
-@Builder(toBuilder = true)
-@NoArgsConstructor
-@AllArgsConstructor*/
 @Entity
-@Table(name = "Client")
+@Table(name = "client")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class Client extends Person implements Serializable {  
+@PrimaryKeyJoinColumn(name = "idPerson")
+public class Client extends Person implements Serializable {
 
 	private static final long serialVersionUID = -7312020058595709047L;
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idClient", unique = true, nullable = false)
 	@JsonIgnore
+	@Id
 	private Integer idClient;
 
 	public Client() {
 		super();
 	}
 
-	/*
-	 * public Client(Integer idPerson, String name, String surname, Integer dni,
-	 * String birthday, Integer telephone, Integer cellphone, Address address,
-	 * Integer idClient) { super(idPerson, name, surname, dni, birthday, telephone,
-	 * cellphone, address); this.idClient = idClient; }
-	 * 
-	 * public Client(Integer idPerson, String name, String surname, Integer dni,
-	 * String birthday, Integer cellphone, Address address, Integer idClient) {
-	 * super(idPerson, name, surname, dni, birthday, cellphone, address);
-	 * this.idClient = idClient; }
-	 */
+	public Client(Integer idPerson, String name, String surname, Integer dni, String birthday, Integer telephone,
+			Integer cellphone, Address address, Integer idClient) {
+		super(idPerson, name, surname, dni, birthday, telephone, cellphone, address);
+		this.idClient = idClient;
+	}
+
+	public Client(Integer idPerson, String name, String surname, Integer dni, String birthday, Integer cellphone,
+			Address address, Integer idClient) {
+		super(idPerson, name, surname, dni, birthday, cellphone, address);
+		this.idClient = idClient;
+	}
 
 	public Integer getIdClient() {
 		return idClient;
