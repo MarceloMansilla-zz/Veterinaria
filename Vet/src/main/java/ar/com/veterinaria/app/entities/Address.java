@@ -42,6 +42,10 @@ public class Address implements Serializable {
 	@Column(name = "zip", nullable = true, length = 10)
 	private Integer zip;
 
+	@Column(name = "deleted", length = 50)
+	@JsonIgnore
+	private boolean deleted;
+
 	public Address() {
 		super();
 	}
@@ -101,6 +105,14 @@ public class Address implements Serializable {
 
 	public void setZip(Integer zip) {
 		this.zip = zip;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 }
