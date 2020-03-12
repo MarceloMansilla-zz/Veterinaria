@@ -22,4 +22,12 @@ public class ClinicalHistoryServiceHelper extends BaseServiceHelper implements C
 		}
 		return false;
 	}
+
+	@Override
+	public boolean isValidClinicalHistory(ClinicalHistory clinicalHistory) {
+		if (getNumberLetterPattern().matcher(clinicalHistory.getClinicalHistory()).matches()) {
+			return true;
+		}
+		return false;
+	}
 }

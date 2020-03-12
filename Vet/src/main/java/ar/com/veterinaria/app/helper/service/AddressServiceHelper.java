@@ -22,4 +22,12 @@ public class AddressServiceHelper extends BaseServiceHelper implements AddressCo
 		}
 		return false;
 	}
+
+	@Override
+	public boolean isValidNumber(Address address) {
+		if (getNumberPattern().matcher(address.getNumber().toString()).matches()) {
+			return true;
+		}
+		return false;
+	}
 }
