@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ar.com.veterinaria.app.entities.Address;
 import ar.com.veterinaria.app.exception.duplicate.AddressDuplicatedException;
-import ar.com.veterinaria.app.exception.duplicate.AnimalDuplicatedException;
 import ar.com.veterinaria.app.exception.notFound.AddressNotFoundException;
-import ar.com.veterinaria.app.exception.notFound.BreedNotFoundException;
 import ar.com.veterinaria.app.repository.AddressRepository;
 
 @Service
@@ -22,6 +20,7 @@ public class AddressManagerDaoImplHelper {
 	@Autowired
 	private static AddressDaoImplHelper addressDaoImplHelper;
 
+	@SuppressWarnings("static-access")
 	@Autowired
 	public AddressManagerDaoImplHelper(AddressDaoImplHelper addressDaoImplHelper, AddressRepository addressRepository) {
 		this.addressDaoImplHelper = addressDaoImplHelper;

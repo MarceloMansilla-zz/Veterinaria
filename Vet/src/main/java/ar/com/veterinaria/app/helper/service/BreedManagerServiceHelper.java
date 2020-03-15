@@ -14,6 +14,7 @@ public class BreedManagerServiceHelper {
 	@Autowired
 	private static BreedServiceHelper breedServiceHelper;
 
+	@SuppressWarnings("static-access")
 	@Autowired
 	public BreedManagerServiceHelper(BreedServiceHelper breedServiceHelper) {
 		this.breedServiceHelper = breedServiceHelper;

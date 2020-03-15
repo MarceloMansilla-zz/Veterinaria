@@ -31,6 +31,7 @@ public class AnimalBreedManagerDaoImplHelper {
 	@Autowired
 	private static AnimalDaoImplHelper animalDaoImplHelper;
 
+	@SuppressWarnings("static-access")
 	@Autowired
 	public AnimalBreedManagerDaoImplHelper(AnimalBreedDaoImplHelper animalBreedDaoImplHelper,
 			AnimalBreedRepository animalBreedRepository, BreedDaoImplHelper breedDaoImplHelper,

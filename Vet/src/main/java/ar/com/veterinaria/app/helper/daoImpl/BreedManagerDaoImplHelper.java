@@ -21,6 +21,7 @@ public class BreedManagerDaoImplHelper {
 	@Autowired
 	private static BreedDaoImplHelper breedDaoImplHelper;
 
+	@SuppressWarnings("static-access")
 	@Autowired
 	public BreedManagerDaoImplHelper(BreedDaoImplHelper breedDaoImplHelper, BreedRepository breedRepository) {
 		this.breedDaoImplHelper = breedDaoImplHelper;

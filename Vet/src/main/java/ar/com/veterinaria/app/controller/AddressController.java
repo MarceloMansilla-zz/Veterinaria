@@ -41,7 +41,7 @@ public class AddressController {
 
 	@GetMapping
 	@RequestMapping(value = "/new-Address", method = RequestMethod.POST)
-	@ApiOperation(value = "Create a new BreAddressed", notes = "Create a new Address.", response = Address.class)
+	@ApiOperation(value = "Create a new Address", notes = "Create a new Address.", response = Address.class)
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Successful retrieval of Address List", response = Address.class),
 			@ApiResponse(code = 500, message = "Internal server error") })

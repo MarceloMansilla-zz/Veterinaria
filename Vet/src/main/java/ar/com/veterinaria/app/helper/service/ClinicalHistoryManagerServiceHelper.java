@@ -14,6 +14,7 @@ public class ClinicalHistoryManagerServiceHelper {
 	@Autowired
 	private static ClinicalHistoryServiceHelper clinicalHistoryServiceHelper;
 
+	@SuppressWarnings("static-access")
 	@Autowired
 	public ClinicalHistoryManagerServiceHelper(ClinicalHistoryServiceHelper clinicalServiceHelper) {
 		this.clinicalHistoryServiceHelper = clinicalServiceHelper;

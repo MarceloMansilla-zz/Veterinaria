@@ -20,6 +20,7 @@ public class AnimalManagerDaoImplHelper {
 	@Autowired
 	private static AnimalDaoImplHelper animalDaoImplHelper;
 
+	@SuppressWarnings("static-access")
 	@Autowired
 	public AnimalManagerDaoImplHelper(AnimalDaoImplHelper animalDaoImplHelper, AnimalRepository animalRepository) {
 		this.animalDaoImplHelper = animalDaoImplHelper;

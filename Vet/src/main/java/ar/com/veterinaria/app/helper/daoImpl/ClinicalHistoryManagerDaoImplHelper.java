@@ -21,6 +21,7 @@ public class ClinicalHistoryManagerDaoImplHelper {
 	@Autowired
 	private static ClinicalHistoryDaoImplHelper clinicalHistoryDaoImplHelper;
 
+	@SuppressWarnings("static-access")
 	@Autowired
 	public ClinicalHistoryManagerDaoImplHelper(ClinicalHistoryDaoImplHelper clinicalHistoryDaoImplHelper,
 			ClinicalHistoryRepository clinicalHistoryRepository) {

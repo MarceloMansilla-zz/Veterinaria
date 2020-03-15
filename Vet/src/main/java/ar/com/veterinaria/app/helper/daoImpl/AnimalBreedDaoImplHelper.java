@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
-
 import ar.com.veterinaria.app.entities.Animal;
 import ar.com.veterinaria.app.entities.AnimalBreed;
 import ar.com.veterinaria.app.entities.Breed;
