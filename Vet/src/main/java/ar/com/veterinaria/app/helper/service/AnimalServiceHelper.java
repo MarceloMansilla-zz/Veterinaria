@@ -3,9 +3,10 @@ package ar.com.veterinaria.app.helper.service;
 import org.springframework.stereotype.Service;
 import ar.com.veterinaria.app.entities.Animal;
 import ar.com.veterinaria.app.helper.service.contract.AnimalContractServiceHelper;
+import ar.com.veterinaria.app.validatorPattern.ValidatorPatternServiceHelper;
 
 @Service
-public class AnimalServiceHelper extends BaseServiceHelper implements AnimalContractServiceHelper {
+public class AnimalServiceHelper implements AnimalContractServiceHelper {
 
 	public AnimalServiceHelper() {
 		super();
@@ -13,7 +14,7 @@ public class AnimalServiceHelper extends BaseServiceHelper implements AnimalCont
 
 	@Override
 	public boolean isValidName(Animal animal) {
-		if (getNamePattern().matcher(animal.getName()).matches()) {
+		if (ValidatorPatternServiceHelper.getNamePattern().matcher(animal.getName()).matches()) {
 			return true;
 		}
 		return false;

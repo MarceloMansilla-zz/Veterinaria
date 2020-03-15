@@ -1,8 +1,8 @@
-package ar.com.veterinaria.app.helper.service;
+package ar.com.veterinaria.app.validatorPattern;
 
 import java.util.regex.Pattern;
 
-public abstract class BaseServiceHelper {
+public class ValidatorPatternServiceHelper {
 	private static final String NAME_REGEX = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$";
 	private static final Pattern NAME_PATTERN = Pattern.compile(NAME_REGEX);
 
@@ -12,15 +12,15 @@ public abstract class BaseServiceHelper {
 	private static final String NUMBER_LETTER_REGEX = "^[0-9]^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$";
 	private static final Pattern NUMBER_LETTER_PATTERN = Pattern.compile(NUMBER_LETTER_REGEX);
 
-	protected static Pattern getNamePattern() {
+	public static Pattern getNamePattern() {
 		return NAME_PATTERN;
 	}
 
-	protected static Pattern getNumberPattern() {
+	public static Pattern getNumberPattern() {
 		return NUMBER_PATTERN;
 	}
 
-	protected static Pattern getNumberLetterPattern() {
+	public static Pattern getNumberLetterPattern() {
 		return NUMBER_LETTER_PATTERN;
 	}
 

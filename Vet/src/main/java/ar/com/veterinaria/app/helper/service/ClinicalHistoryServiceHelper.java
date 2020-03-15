@@ -3,13 +3,14 @@ package ar.com.veterinaria.app.helper.service;
 import org.springframework.stereotype.Service;
 import ar.com.veterinaria.app.entities.ClinicalHistory;
 import ar.com.veterinaria.app.helper.service.contract.ClinicalHistoryContractServiceHelper;
+import ar.com.veterinaria.app.validatorPattern.ValidatorPatternServiceHelper;
 
 @Service
-public class ClinicalHistoryServiceHelper extends BaseServiceHelper implements ClinicalHistoryContractServiceHelper {
+public class ClinicalHistoryServiceHelper implements ClinicalHistoryContractServiceHelper {
 
 	@Override
 	public boolean isValidName(ClinicalHistory clinicalHistory) {
-		if (getNamePattern().matcher(clinicalHistory.getClinicalHistory()).matches()) {
+		if (ValidatorPatternServiceHelper.getNamePattern().matcher(clinicalHistory.getClinicalHistory()).matches()) {
 			return true;
 		}
 		return false;
@@ -25,7 +26,7 @@ public class ClinicalHistoryServiceHelper extends BaseServiceHelper implements C
 
 	@Override
 	public boolean isValidClinicalHistory(ClinicalHistory clinicalHistory) {
-		if (getNumberLetterPattern().matcher(clinicalHistory.getClinicalHistory()).matches()) {
+		if (ValidatorPatternServiceHelper.getNumberLetterPattern().matcher(clinicalHistory.getClinicalHistory()).matches()) {
 			return true;
 		}
 		return false;

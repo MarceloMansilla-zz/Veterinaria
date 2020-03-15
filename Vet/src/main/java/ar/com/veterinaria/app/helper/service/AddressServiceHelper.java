@@ -3,13 +3,14 @@ package ar.com.veterinaria.app.helper.service;
 import org.springframework.stereotype.Service;
 import ar.com.veterinaria.app.entities.Address;
 import ar.com.veterinaria.app.helper.service.contract.AddressContractServiceHelper;
+import ar.com.veterinaria.app.validatorPattern.ValidatorPatternServiceHelper;
 
 @Service
-public class AddressServiceHelper extends BaseServiceHelper implements AddressContractServiceHelper {
+public class AddressServiceHelper implements AddressContractServiceHelper {
 
 	@Override
 	public boolean isValidName(Address address) {
-		if (getNamePattern().matcher(address.getName()).matches()) {
+		if (ValidatorPatternServiceHelper.getNamePattern().matcher(address.getName()).matches()) {
 			return true;
 		}
 		return false;
@@ -25,7 +26,7 @@ public class AddressServiceHelper extends BaseServiceHelper implements AddressCo
 
 	@Override
 	public boolean isValidNumber(Address address) {
-		if (getNumberPattern().matcher(address.getNumber().toString()).matches()) {
+		if (ValidatorPatternServiceHelper.getNumberPattern().matcher(address.getNumber().toString()).matches()) {
 			return true;
 		}
 		return false;
