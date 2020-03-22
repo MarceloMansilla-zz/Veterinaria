@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import org.junit.Before;
 import org.junit.Rule;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +22,7 @@ class BreedTest {
 	private Breed breed;
 	private Breed breedTwo;
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		breed = new Breed();
 		breedTwo = new Breed("dogo", false);

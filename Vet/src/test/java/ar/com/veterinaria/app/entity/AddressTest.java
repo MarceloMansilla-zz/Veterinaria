@@ -2,9 +2,8 @@ package ar.com.veterinaria.app.entity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import org.junit.Before;
 import org.junit.Rule;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -18,11 +17,10 @@ import ar.com.veterinaria.app.entities.Address;
 class AddressTest {
 
 	@Rule
-
 	private Address address;
 	private Address addressTwo;
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		address = new Address();
 		addressTwo = new Address(54652, "AA", "Buenos Aires", "Quilmes", 1887);

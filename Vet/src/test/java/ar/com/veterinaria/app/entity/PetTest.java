@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import java.util.Date;
 import org.junit.Before;
 import org.junit.Rule;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -30,7 +31,7 @@ class PetTest {
 	private Pet petTwo;
 
 	@Rule
-	@Before
+	@BeforeEach
 	public void setup() {
 		animal = new Animal("perro", false);
 		breed = new Breed("dogo", false);
