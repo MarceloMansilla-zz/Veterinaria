@@ -1,12 +1,12 @@
 package ar.com.veterinaria.app.entity;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,11 +24,18 @@ import ar.com.veterinaria.app.entities.Breed;
 class AnimalBreedTest {
 
 	@Rule
-	private Animal animal = new Animal("cat", false);
-	private Breed breed = new Breed("cat", false);
-	private AnimalBreed animalBreedTwo = new AnimalBreed();
+	private Animal animal;
+	private Breed breed;
+	private AnimalBreed animalBreedTwo;
+	private AnimalBreed animalBreed;
 
-	private AnimalBreed animalBreed = new AnimalBreed(new Breed(), new Animal());
+	@Before
+	public void setup() {
+		animal = new Animal("cat", false);
+		breed = new Breed("cat", false);
+		animalBreedTwo = new AnimalBreed();
+		animalBreed = new AnimalBreed(new Breed(), new Animal());
+	}
 
 	@Test
 	@DisplayName("When AnimalBreed ID is not set, checking no match is ok")
@@ -82,6 +89,7 @@ class AnimalBreedTest {
 		animalBreed.setDeleted(true);
 		assertTrue(animalBreed.isDeleted());
 	}
+
 	@Test
 	@DisplayName("When AnimalBreed is created from SuperClass,checking Animal and Breed are not null, so the case is ok")
 	void test_AnimalBreed_super_class() {

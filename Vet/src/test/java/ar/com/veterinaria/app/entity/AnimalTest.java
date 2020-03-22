@@ -3,6 +3,8 @@ package ar.com.veterinaria.app.entity;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,8 +20,14 @@ import ar.com.veterinaria.app.entities.Animal;
 class AnimalTest {
 
 	@Rule
-	private Animal animal = new Animal();
-	private Animal animalTwo = new Animal("cat", false);
+	private Animal animal;
+	private Animal animalTwo;
+
+	@Before
+	public void setup() {
+		animal = new Animal();
+		animalTwo = new Animal("cat", false);
+	}
 
 	@Test
 	@DisplayName("When I insert a valid ID, so the case is ok")

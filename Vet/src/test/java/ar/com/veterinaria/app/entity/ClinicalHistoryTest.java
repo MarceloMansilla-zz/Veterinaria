@@ -3,6 +3,7 @@ package ar.com.veterinaria.app.entity;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,13 @@ class ClinicalHistoryTest {
 
 	@Rule
 	private ClinicalHistory clinicalHistory = new ClinicalHistory();
-	private ClinicalHistory clinicalHistoryTwo = new ClinicalHistory("J5687", false);
+	private ClinicalHistory clinicalHistoryTwo = new ClinicalHistory("J5687");
+
+	@Before
+	public void setup() {
+		clinicalHistory = new ClinicalHistory();
+		clinicalHistoryTwo = new ClinicalHistory("J5687");
+	}
 
 	@Test
 	@DisplayName("When I insert a valid ID, so the case is ok")

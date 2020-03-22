@@ -1,6 +1,8 @@
 package ar.com.veterinaria.app.entities;
 
 import java.io.Serializable;
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,7 +36,7 @@ public class Pet implements Serializable {
 	private String name;
 
 	@Column(name = "birthday", nullable = true, length = 30)
-	private String birthday;
+	private Date birthday;
 
 	@Column(name = "size", nullable = true, length = 50)
 	private String size;
@@ -55,6 +57,17 @@ public class Pet implements Serializable {
 		super();
 	}
 
+	public Pet(String name, Date birthday, String size, AnimalBreed animalBreed,
+			ClinicalHistory clinicalHistory) {
+		super();
+		this.name = name;
+		this.birthday = birthday;
+		this.size = size;
+		this.deleted = false;
+		this.animalBreed = animalBreed;
+		this.clinicalHistory = clinicalHistory;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -71,11 +84,11 @@ public class Pet implements Serializable {
 		this.name = name;
 	}
 
-	public String getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(String birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 
