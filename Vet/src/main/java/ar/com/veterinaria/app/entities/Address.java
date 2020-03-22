@@ -57,6 +57,7 @@ public class Address implements Serializable {
 		this.city = city;
 		this.department = department;
 		this.zip = zip;
+		this.deleted = false;
 	}
 
 	public Integer getId() {

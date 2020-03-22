@@ -34,12 +34,6 @@ public class Animal implements Serializable {
 	@JsonIgnore
 	private boolean deleted;
 
-	public Animal(Integer id, String name) {
-		super();
-		this.id = id;
-		this.name = name;
-	}
-
 	public Animal() {
 		super();
 	}

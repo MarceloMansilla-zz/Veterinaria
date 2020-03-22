@@ -38,19 +38,6 @@ public class Breed implements Serializable {
 		super();
 	}
 
-	public static Breed form(Integer id, String breedName) {
-		Breed breed = new Breed();
-		breed.setId(id);
-		breed.setBreed(breedName);
-		return breed;
-	}
-
-	public Breed(Integer id, String breed) {
-		super();
-		this.id = id;
-		this.breed = breed;
-	}
-
 	public Breed(String breed, boolean deleted) {
 		super();
 		this.breed = breed;

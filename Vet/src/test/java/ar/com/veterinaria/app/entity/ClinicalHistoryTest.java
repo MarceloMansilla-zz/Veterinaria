@@ -9,62 +9,63 @@ import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import ar.com.veterinaria.app.entities.Animal;
+import ar.com.veterinaria.app.entities.ClinicalHistory;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-@DisplayName("Test Animal Entity")
-class AnimalTest {
+@DisplayName("Test ClinicalHistory Entity")
+class ClinicalHistoryTest {
 
 	@Rule
-	private Animal animal = new Animal();
-	private Animal animalTwo = new Animal("cat", false);
+	private ClinicalHistory clinicalHistory = new ClinicalHistory();
+	private ClinicalHistory clinicalHistoryTwo = new ClinicalHistory("J5687", false);
 
 	@Test
 	@DisplayName("When I insert a valid ID, so the case is ok")
 	void test_Id() {
-		assertNotEquals(2, animal.getId());
+		assertNotEquals(2, clinicalHistory.getId());
 	}
 
 	@Test
 	@DisplayName("When I insert a valid NAME, so the case is ok")
 	void test_Name() {
-		assertNotEquals("perro", animal.getName());
+		clinicalHistory.setClinicalHistory("M1234");
+		assertThat(clinicalHistory.getClinicalHistory()).isEqualTo("M1234");
 	}
 
 	@Test
-	@DisplayName("When I create a Animal with paramether at the moment of creation, so the case is ok")
-	void test_Animal_Two_Set_Name() {
-		assertThat(animalTwo.getName()).isEqualTo("cat");
+	@DisplayName("When I create a ClinicalHistory with paramether at the moment of creation, so the case is ok")
+	void test_Clinical_History_Two_Set_Name() {
+		clinicalHistoryTwo.setClinicalHistory("J5678");
+		assertThat(clinicalHistoryTwo.getClinicalHistory()).isEqualTo("J5678");
 	}
 
 	@Test
 	@DisplayName("When I insert a true value in Deleted, checking is deleted TRUE, the case is ok")
 	void test_Is_Deleted() {
-		animal.setDeleted(true);
-		assertThat(animal.isDeleted());
+		clinicalHistory.setDeleted(true);
+		assertThat(clinicalHistory.isDeleted());
 	}
 
 	@Test
 	@DisplayName("When I insert a valid ID, so the case is ok")
 	void test_Set_Id() {
-		animal.setId(3);
-		assertThat(animal.getId()).isEqualTo(3);
+		clinicalHistory.setId(3);
+		assertThat(clinicalHistory.getId()).isEqualTo(3);
 	}
 
 	@Test
 	@DisplayName("When I insert empty name, checking is empty, the case is ok")
 	void test_Empty_Name() {
-		animal.setName("");
-		assertThat(animal.getName()).isEqualTo("");
+		clinicalHistory.setClinicalHistory("");
+		assertThat(clinicalHistory.getClinicalHistory()).isEqualTo("");
 	}
 
 	@Test
 	@DisplayName("When I insert a true value in Deleted, checking is deleted FALSE, the case is ok")
 	void test_Is_Not_Deleted() {
-		animal.setDeleted(false);
-		assertFalse(animal.isDeleted());
+		clinicalHistory.setDeleted(false);
+		assertFalse(clinicalHistory.isDeleted());
 	}
 
 }

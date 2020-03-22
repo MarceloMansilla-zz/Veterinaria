@@ -37,10 +37,10 @@ public class ClinicalHistory implements Serializable {
 		super();
 	}
 
-	public ClinicalHistory(Integer id, String numberClinicalHistory) {
+	public ClinicalHistory(String clinicalHistory, boolean deleted) {
 		super();
-		this.id = id;
-		this.clinicalHistory = numberClinicalHistory;
+		this.clinicalHistory = clinicalHistory;
+		this.deleted = deleted;
 	}
 
 	public Integer getId() {
