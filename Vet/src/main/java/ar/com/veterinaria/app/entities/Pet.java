@@ -39,6 +39,10 @@ public class Pet implements Serializable {
 	@Column(name = "size", nullable = true, length = 50)
 	private String size;
 
+	@Column(name = "deleted", length = 70)
+	@JsonIgnore
+	private boolean deleted;
+
 	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "idAnimalBreed", nullable = true)
 	private AnimalBreed animalBreed;
@@ -49,17 +53,6 @@ public class Pet implements Serializable {
 
 	public Pet() {
 		super();
-	}
-
-	public Pet(Integer id, String name, String birthday, String size, AnimalBreed animalBreed,
-			ClinicalHistory clinicalHistory) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.birthday = birthday;
-		this.size = size;
-		this.animalBreed = animalBreed;
-		this.clinicalHistory = clinicalHistory;
 	}
 
 	public Integer getId() {
@@ -92,6 +85,14 @@ public class Pet implements Serializable {
 
 	public void setSize(String size) {
 		this.size = size;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 	public AnimalBreed getAnimalBreed() {

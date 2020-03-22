@@ -46,11 +46,11 @@ public class AnimalBreed implements Serializable {
 		super();
 	}
 
-	public AnimalBreed(Integer id, Breed breed, Animal animal) {
+	public AnimalBreed(Breed breed, Animal animal) {
 		super();
-		this.id = id;
 		this.breed = breed;
 		this.animal = animal;
+		this.deleted = false;
 	}
 
 	public Integer getId() {
