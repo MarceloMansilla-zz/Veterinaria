@@ -16,6 +16,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import ar.com.veterinaria.app.entities.user.Client;
+
 @Entity
 @Table(name = "petclient")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -31,7 +33,7 @@ public class PetClient implements Serializable {
 
 	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "idClient", nullable = true)
-	private Cliente client;
+	private Client client;
 
 	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "idPet", nullable = true)
@@ -41,7 +43,7 @@ public class PetClient implements Serializable {
 		super();
 	}
 
-	public PetClient(Integer id, Cliente client, Pet pet) {
+	public PetClient(Integer id, Client client, Pet pet) {
 		super();
 		this.id = id;
 		this.client = client;
@@ -56,11 +58,11 @@ public class PetClient implements Serializable {
 		this.id = id;
 	}
 
-	public Cliente getClient() {
+	public Client getClient() {
 		return client;
 	}
 
-	public void setClient(Cliente client) {
+	public void setClient(Client client) {
 		this.client = client;
 	}
 

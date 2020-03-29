@@ -1,4 +1,4 @@
-package ar.com.veterinaria.app.entities;
+package ar.com.veterinaria.app.entities.user;
 
 import java.io.Serializable;
 import javax.persistence.CascadeType;
@@ -16,6 +16,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+import ar.com.veterinaria.app.entities.Address;
+
 import javax.persistence.InheritanceType;
 //@Inheritance(strategy = InheritanceType.JOINED)
 //@DiscriminatorColumn(name = "personType")
@@ -33,11 +36,10 @@ public class Person implements Serializable {
 
 	// @TableGenerator(name = "PERSON_GEN", table = "ID_PERSON", pkColumnName =
 	// "idPerson", valueColumnName = "GEN_VAL", allocationSize = 1)
-
-	@GeneratedValue(strategy = GenerationType.TABLE) // , generator = "PERSON_GEN")
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // , generator = "PERSON_GEN")
 	@Column(name = "idPerson", unique = true, nullable = false)
 	@JsonIgnore
-	@Id
 	protected Integer idPerson;
 
 	@Column(name = "name", nullable = false, length = 50)

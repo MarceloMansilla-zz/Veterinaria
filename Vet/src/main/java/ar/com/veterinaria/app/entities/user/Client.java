@@ -1,4 +1,4 @@
-package ar.com.veterinaria.app.entities;
+package ar.com.veterinaria.app.entities.user;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -11,6 +11,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import ar.com.veterinaria.app.entities.Address;
+
 /*@PrimaryKeyJoinColumn(name = "idPerson")
 @DiscriminatorValue("idPerson")
 @Builder(toBuilder = true)
@@ -20,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @Table(name = "Client")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class Cliente extends Person implements Serializable {
+public class Client extends Person implements Serializable {
 
 	private static final long serialVersionUID = -7312020058595709047L;
 
@@ -29,17 +31,17 @@ public class Cliente extends Person implements Serializable {
 	@JsonIgnore
 	private Integer idClient;
 
-	public Cliente() {
+	public Client() {
 		super();
 	}
 
-	public Cliente(Integer idPerson, String name, String surname, Integer dni, String birthday, Integer telephone,
+	public Client(Integer idPerson, String name, String surname, Integer dni, String birthday, Integer telephone,
 			Integer cellphone, Address address, Integer idClient) {
 		super(idPerson, name, surname, dni, birthday, telephone, cellphone, address);
 		this.idClient = idClient;
 	}
 
-	public Cliente(Integer idPerson, String name, String surname, Integer dni, String birthday, Integer cellphone,
+	public Client(Integer idPerson, String name, String surname, Integer dni, String birthday, Integer cellphone,
 			Address address, Integer idClient) {
 		super(idPerson, name, surname, dni, birthday, cellphone, address);
 		this.idClient = idClient;
