@@ -24,7 +24,7 @@ public class BreedManagerServiceHelper {
 		if (!breedServiceHelper.isValidName(breed)) {
 			throw new BreedInvalidDataException(breed);
 
-		} else if (!breedServiceHelper.isValidLengthname(breed)) {
+		} else if (!breedServiceHelper.isValidLengthName(breed)) {
 			throw new BreedValidationLengthDataException(breed);
 		}
 		return true;

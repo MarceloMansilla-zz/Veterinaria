@@ -6,9 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import ar.com.veterinaria.app.entities.dao.UserDao;
-import ar.com.veterinaria.app.entities.exception.notFound.ClinicalHistoryNotFoundException;
+import ar.com.veterinaria.app.entities.exception.notFound.UserNotFoundException;
 import ar.com.veterinaria.app.entities.repository.UserRepository;
 import ar.com.veterinaria.app.entities.user.User;
 
@@ -33,7 +32,7 @@ public class UserDaoImpl implements UserDao {
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
-		throw new ClinicalHistoryNotFoundException(id);
+		throw new UserNotFoundException(id);
 	}
 
 	@Override

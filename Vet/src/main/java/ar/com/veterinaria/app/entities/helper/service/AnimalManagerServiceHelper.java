@@ -24,7 +24,7 @@ public class AnimalManagerServiceHelper {
 		if (!animalServiceHelper.isValidName(animal)) {
 			throw new AnimalInvalidDataException(animal);
 
-		} else if (!animalServiceHelper.isValidLengthname(animal)) {
+		} else if (!animalServiceHelper.isValidLengthName(animal)) {
 			throw new AnimalValidationLengthDataException(animal);
 		}
 		return true;

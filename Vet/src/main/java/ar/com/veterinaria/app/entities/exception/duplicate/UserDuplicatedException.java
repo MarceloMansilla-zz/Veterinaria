@@ -17,7 +17,7 @@ public class UserDuplicatedException extends RuntimeException {
 		super("The User with id '" + id + "' already exists.");
 	}
 
-	public UserDuplicatedException(User userEmail) {
-		super("The User Email" + userEmail.getEmail() + "' already exists.");
+	public UserDuplicatedException(User user) {
+		super("The User " + user + "' already exists.");
 	}
 }

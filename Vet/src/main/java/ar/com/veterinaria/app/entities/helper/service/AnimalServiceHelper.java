@@ -22,7 +22,7 @@ public class AnimalServiceHelper implements AnimalContractServiceHelper {
 	}
 
 	@Override
-	public boolean isValidLengthname(Animal animal) {
+	public boolean isValidLengthName(Animal animal) {
 		if (animal.getName().length() < 70) {
 			return true;
 		}

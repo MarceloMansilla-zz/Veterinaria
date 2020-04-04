@@ -24,7 +24,7 @@ public class ClinicalHistoryManagerServiceHelper {
 		if (!clinicalHistoryServiceHelper.isValidName(clinicalHistory)) {
 			throw new ClinicalHistoryInvalidDataException(clinicalHistory);
 
-		} else if (!clinicalHistoryServiceHelper.isValidLengthname(clinicalHistory)) {
+		} else if (!clinicalHistoryServiceHelper.isValidLengthName(clinicalHistory)) {
 			throw new ClinicalHistoryValidationLengthDataException(clinicalHistory);
 		}
 		return true;

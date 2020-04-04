@@ -18,7 +18,7 @@ public class ClinicalHistoryServiceHelper implements ClinicalHistoryContractServ
 	}
 
 	@Override
-	public boolean isValidLengthname(ClinicalHistory clinicalHistory) {
+	public boolean isValidLengthName(ClinicalHistory clinicalHistory) {
 		if (clinicalHistory.getClinicalHistory().length() < 50) {
 			return true;
 		}

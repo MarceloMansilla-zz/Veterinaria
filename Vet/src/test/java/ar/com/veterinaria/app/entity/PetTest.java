@@ -3,7 +3,6 @@ package ar.com.veterinaria.app.entity;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import java.util.Date;
 import org.junit.Rule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -37,7 +36,7 @@ class PetTest {
 		animalBreed = new AnimalBreed(breed, animal);
 		clinicalHistory = new ClinicalHistory("M726");
 		pet = new Pet();
-		petTwo = new Pet("nano", new Date(2009, 10, 10), "pequeño", animalBreed, clinicalHistory);
+		petTwo = new Pet("nano", null, "pequeño", animalBreed, clinicalHistory);
 	}
 
 	@Test
@@ -69,7 +68,7 @@ class PetTest {
 	@Test
 	@DisplayName("When Pet BIRTHDAY, checking Year is not correct, so the case is ok")
 	void test_Set_Birthday() {
-		petTwo.setBirthday(new Date(2019, 10, 10));
+		petTwo.setBirthday(null);
 		assertNotEquals(2020, petTwo.getBirthday().getYear());
 	}
 

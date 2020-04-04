@@ -4,6 +4,6 @@ public interface BaseContractServiceHelper<T> {
 
 	boolean isValidName(T t);
 
-	boolean isValidLengthname(T t);
+	boolean isValidLengthName(T t);
 
 }

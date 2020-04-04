@@ -23,7 +23,7 @@ public class AnimalBreedServiceHelper implements AnimalBreedContractServiceHelpe
 	}
 
 	@Override
-	public boolean isValidLengthname(AnimalBreed animalBreed) {
+	public boolean isValidLengthName(AnimalBreed animalBreed) {
 		if (animalBreed.getAnimal().getName().length() <= 70 && animalBreed.getBreed().getBreed().length() <= 50) {
 			return true;
 		}

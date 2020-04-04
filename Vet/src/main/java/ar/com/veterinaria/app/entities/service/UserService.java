@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.com.veterinaria.app.entities.dao.UserDao;
+import ar.com.veterinaria.app.entities.helper.service.UserManagerServiceHelper;
 import ar.com.veterinaria.app.entities.service.contract.UserContractService;
 import ar.com.veterinaria.app.entities.user.User;
 
@@ -74,9 +75,10 @@ public class UserService implements UserContractService {
 
 	@Override
 	public boolean isValidInputData(User user) {
-		/*
-		 * if (ClinicalHistoryManagerServiceHelper.validate(user)) { return true; }
-		 */
+		if (UserManagerServiceHelper.validate(user)) {
+			return true;
+		}
+
 		return false;
 	}
 

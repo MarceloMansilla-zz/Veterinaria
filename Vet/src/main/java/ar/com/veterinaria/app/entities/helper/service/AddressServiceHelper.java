@@ -18,7 +18,7 @@ public class AddressServiceHelper implements AddressContractServiceHelper {
 	}
 
 	@Override
-	public boolean isValidLengthname(Address address) {
+	public boolean isValidLengthName(Address address) {
 		if (address.getName().length() < 50) {
 			return true;
 		}
