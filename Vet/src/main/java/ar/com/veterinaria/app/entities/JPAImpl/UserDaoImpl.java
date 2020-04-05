@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ar.com.veterinaria.app.entities.dao.UserDao;
 import ar.com.veterinaria.app.entities.exception.notFound.UserNotFoundException;
+import ar.com.veterinaria.app.entities.helper.daoImpl.UserManagerDaoImplHelper;
 import ar.com.veterinaria.app.entities.repository.UserRepository;
 import ar.com.veterinaria.app.entities.user.User;
 
@@ -26,9 +27,9 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User findById(int id) {
 		try {
-			// if (!ClinicalHistoryManagerDaoImplHelper.isDeleted(id)) {
+			if (!UserManagerDaoImplHelper.isDeleted(id)) {
 			return userRepository.findUserById(id);
-			// }
+			 }
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}

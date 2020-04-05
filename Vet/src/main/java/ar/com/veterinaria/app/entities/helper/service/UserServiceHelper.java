@@ -18,15 +18,15 @@ public class UserServiceHelper implements UserContractServiceHelper {
 
 	@Override
 	public boolean isValidLengthPasword(User user) {
-		if (user.getEmail().length() < 8) {
-			return true;
+		if (user.getPassword().length() <= 8) {
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isValidPasword(User user) {
-		if (ValidatorPatternServiceHelper.getEmailPattern().matcher(user.getEmail()).matches()) {
+		if (ValidatorPatternServiceHelper.getPasswordPattern().matcher(user.getPassword()).matches()) {
 			return true;
 		}
 		return false;

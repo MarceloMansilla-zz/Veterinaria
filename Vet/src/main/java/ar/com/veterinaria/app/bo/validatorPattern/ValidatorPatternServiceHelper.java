@@ -14,6 +14,15 @@ public class ValidatorPatternServiceHelper {
 	
 	private static final String EMAIL_REGEX = "/^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$/";
 	private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
+	
+	/*
+	 * DEVELOPE REGEX:
+	 * 		FOR EMAIL
+	 * 		PASSWORD
+	 * 
+	 */
+	private static final String PASSWORD_REGEX = "^[0-9]^[a-zA-Z]*$";//[a-zA-Z][0-9][&._-]/ ";//^[0-9]^[a-zA-Z]*$";
+	private static final Pattern PASSWORD_PATTERN = Pattern.compile(PASSWORD_REGEX);
 
 	public static Pattern getNamePattern() {
 		return NAME_PATTERN;
@@ -29,6 +38,10 @@ public class ValidatorPatternServiceHelper {
 	
 	public static Pattern getEmailPattern() {
 		return EMAIL_PATTERN;
+	}
+	
+	public static Pattern getPasswordPattern() {
+		return PASSWORD_PATTERN;
 	}
 
 }

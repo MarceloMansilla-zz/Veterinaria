@@ -10,8 +10,8 @@ public class UserPasswordValidationLengthDataException extends RuntimeException 
 	private static final long serialVersionUID = 4073642502739638438L;
 
 	public UserPasswordValidationLengthDataException(User user) {
-		super("Length password is less than 6 character: " + user.getPassword().length()
-				+ "characters for the password set");
+		super("Length password is less than 8 character: " + user.getPassword().length()
+				+ " characters for the password set");
 	}
 
 }
