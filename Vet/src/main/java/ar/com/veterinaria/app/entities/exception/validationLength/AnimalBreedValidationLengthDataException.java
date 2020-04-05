@@ -7,7 +7,7 @@ import ar.com.veterinaria.app.entities.AnimalBreed;
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
 public class AnimalBreedValidationLengthDataException extends RuntimeException {
 
-	private static final long serialVersionUID = 1324824257559118085L;
+	private static final long serialVersionUID = -8291809112287234393L;
 
 	public AnimalBreedValidationLengthDataException(AnimalBreed animalBreed) {
 		super("AnimalBreed validation lenght: \n Length for  \n\t Animal is: "

@@ -4,6 +4,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ar.com.veterinaria.app.entities.Address;
+import ar.com.veterinaria.app.entities.exception.invalidData.AddressInvalidDataException;
+import ar.com.veterinaria.app.entities.exception.validationLength.AddressValidationLengthDataException;
 
 @Service
 @Transactional
@@ -19,13 +21,11 @@ public class AddressManagerServiceHelper {
 	}
 
 	public static boolean validate(Address address) {
-		/*
-		 * if (!addressServiceHelper.isValidName(address)) { throw new
-		 * AddressInvalidDataException(address);
-		 * 
-		 * } else if (!addressServiceHelper.isValidLengthname(address)) { throw new
-		 * AddressValidationLengthDataException(address); }
-		 */
+		if (!addressServiceHelper.isValidName(address)) {
+			throw new AddressInvalidDataException(address);
+		} else if (!addressServiceHelper.isValidLengthName(address)) {
+			throw new AddressValidationLengthDataException(address);
+		}
 		return true;
 	}
 }

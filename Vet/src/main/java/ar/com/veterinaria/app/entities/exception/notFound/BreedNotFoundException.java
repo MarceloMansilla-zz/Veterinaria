@@ -7,7 +7,7 @@ import ar.com.veterinaria.app.entities.Breed;
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
 public class BreedNotFoundException extends RuntimeException {
 
-	private static final long serialVersionUID = 1093306691287711077L;
+	private static final long serialVersionUID = -9167796864650254703L;
 
 	public BreedNotFoundException(Integer id) {
 		super("Could not find Breed with id " + id);

@@ -7,7 +7,7 @@ import ar.com.veterinaria.app.entities.ClinicalHistory;
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
 public class ClinicalHistoryInvalidDataException extends RuntimeException {
 
-	private static final long serialVersionUID = 1093306691287711077L;
+	private static final long serialVersionUID = -6873524745019916380L;
 
 	public ClinicalHistoryInvalidDataException(ClinicalHistory clinicalHistory) {
 		super("Invalid Clinical History Name: " + clinicalHistory.getClinicalHistory()

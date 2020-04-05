@@ -7,7 +7,7 @@ import ar.com.veterinaria.app.entities.Address;
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
 public class AddressNotFoundException extends RuntimeException {
 
-	private static final long serialVersionUID = 1093306691287711077L;
+	private static final long serialVersionUID = 7022406547559038112L;
 
 	public AddressNotFoundException(Integer id) {
 		super("Could not find Address with id " + id);

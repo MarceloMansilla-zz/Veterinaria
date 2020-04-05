@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
 public class AnimalDuplicatedException extends RuntimeException {
 
-	private static final long serialVersionUID = 1093306691287711077L;
+	private static final long serialVersionUID = -213155368609992996L;
 
 	public AnimalDuplicatedException(String animal) {
 		super("The Animal'" + animal + "' already exists.");

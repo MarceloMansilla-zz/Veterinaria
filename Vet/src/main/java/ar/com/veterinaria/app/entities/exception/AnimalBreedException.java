@@ -6,7 +6,7 @@ import ar.com.veterinaria.app.entities.Breed;
 
 public class AnimalBreedException extends RuntimeException {
 
-	private static final long serialVersionUID = 1093306691287711077L;
+	private static final long serialVersionUID = 1636033506569701658L;
 
 	public AnimalBreedException(AnimalBreed animalBreed) {
 		super("\nIt is neccesary an association: \nAnimal " + animalBreed.getAnimal().getName() + " & Breed "

@@ -7,7 +7,7 @@ import ar.com.veterinaria.app.entities.ClinicalHistory;
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
 public class ClinicalHistoryNotFoundException extends RuntimeException {
 
-	private static final long serialVersionUID = 1093306691287711077L;
+	private static final long serialVersionUID = -178667106471671068L;
 
 	public ClinicalHistoryNotFoundException(Integer id) {
 		super("Could not find Clinical History with id " + id);

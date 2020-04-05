@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
 public class ClinicalHistoryDuplicatedException extends RuntimeException {
 
-	private static final long serialVersionUID = 1093306691287711077L;
+	private static final long serialVersionUID = 5479891174244479722L;
 
 	public ClinicalHistoryDuplicatedException(String clinicalHistory) {
 		super("The Clinical History '" + clinicalHistory + "' already exists.");

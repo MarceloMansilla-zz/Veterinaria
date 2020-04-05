@@ -21,6 +21,8 @@ public class UserManagerServiceHelper {
 	}
 
 	public static boolean validate(User user) {
+		//VALIDATE EMAIL
+		
 		if (!userServiceHelper.isValidLengthPasword(user)) {
 			throw new UserPasswordValidationLengthDataException(user);
 

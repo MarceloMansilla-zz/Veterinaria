@@ -7,7 +7,7 @@ import ar.com.veterinaria.app.entities.AnimalBreed;
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
 public class AnimalBreedInvalidDataException extends RuntimeException {
 
-	private static final long serialVersionUID = -7986231475642883308L;
+	private static final long serialVersionUID = 3345660005874435319L;
 
 	public AnimalBreedInvalidDataException(AnimalBreed animalBreed) {
 		super("Invalid Name: \n Animal: " + animalBreed.getAnimal().getName() + ", Breed: "

@@ -7,7 +7,7 @@ import ar.com.veterinaria.app.entities.Animal;
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
 public class AnimalNotFoundException extends RuntimeException {
 
-	private static final long serialVersionUID = 1093306691287711077L;
+	private static final long serialVersionUID = 6736794088960250363L;
 
 	public AnimalNotFoundException(Integer id) {
 		super("Could not find Animal with id " + id);

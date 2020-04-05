@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
 public class AnimalBreedDuplicatedException extends RuntimeException {
 
-	private static final long serialVersionUID = 1093306691287711077L;
+	private static final long serialVersionUID = 4827242852066315833L;
 
 	public AnimalBreedDuplicatedException(int id) {
 		super("The AnimalBreed with id '" + id + "' already exists.");
 	}
 
 	public AnimalBreedDuplicatedException(AnimalBreed animalBreed) {
-		super("\n\tThe AnimalBreed \n\tAnimal: '" + animalBreed.getAnimal().getName()+"' && Breed: '"+ animalBreed.getBreed().getBreed()+ "'  already exists.");
+		super("\n\tThe AnimalBreed \n\tAnimal: '" + animalBreed.getAnimal().getName() + "' && Breed: '"
+				+ animalBreed.getBreed().getBreed() + "'  already exists.");
 	}
 }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
 public class UserDuplicatedException extends RuntimeException {
 
-	private static final long serialVersionUID = 8523850246335839709L;
+	private static final long serialVersionUID = 8275834289963903546L;
 
 	public UserDuplicatedException(String user) {
 		super("The User " + user + "' already exists.");
