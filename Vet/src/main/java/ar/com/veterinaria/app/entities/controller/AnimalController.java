@@ -10,8 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,8 +41,7 @@ public class AnimalController {
 		this.animalService = animalService;
 	}
 
-	@GetMapping
-	@RequestMapping(value = "/new-animal", method = RequestMethod.POST)
+	@PostMapping(value = "/new-animal")
 	@ApiOperation(value = "Create a new Animal", notes = "Create a new Breed.", response = Animal.class)
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Successful retrieval of Animal List", response = Animal.class),
@@ -62,8 +64,7 @@ public class AnimalController {
 		}
 	}
 
-	@GetMapping
-	@RequestMapping(value = "/get-list-animal", method = RequestMethod.GET)
+	@GetMapping(value = "/get-list-animal")
 	@ApiOperation(value = "Returns List of Animal", notes = "Returns a complete list of Animal details.", response = Animal.class)
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Successful retrieval of Animal List", response = Animal.class),
@@ -78,7 +79,7 @@ public class AnimalController {
 		}
 	}
 
-	@RequestMapping(value = "search-by-id/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "search-by-id/{id}")
 	@ApiOperation(value = "Search a Animal by ID", response = Animal.class)
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),
 			@ApiResponse(code = 403, message = "Operation is forbidden"),
@@ -98,7 +99,7 @@ public class AnimalController {
 	}
 
 	// TO BE DEVELOPED
-	@RequestMapping(value = "/search-by-name/{animal}", method = RequestMethod.GET)
+	@GetMapping(value = "/search-by-name/{animal}")
 	@ApiOperation(value = "Search a Animal by Name", response = Animal.class)
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),
 			@ApiResponse(code = 403, message = "Operation is forbidden"),
@@ -117,7 +118,7 @@ public class AnimalController {
 	/*
 	 * TO BE DEVELOPED
 	 **/
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	@PutMapping(value = "/{id}")
 	@ApiOperation(value = "Update a Animal by ID", response = Animal.class)
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),
 			@ApiResponse(code = 403, message = "Operation is forbidden"),
@@ -133,7 +134,7 @@ public class AnimalController {
 		}
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{id}")
 	@ApiOperation(value = "Delete a Animal by ID", response = Animal.class)
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),
 			@ApiResponse(code = 403, message = "Operation is forbidden"),

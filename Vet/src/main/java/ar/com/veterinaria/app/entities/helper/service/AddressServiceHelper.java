@@ -11,25 +11,28 @@ public class AddressServiceHelper implements AddressContractServiceHelper {
 
 	@Override
 	public boolean isValidName(Address address) {
+		boolean valid = false;
 		if (ValidatorPatternServiceHelper.getNamePattern().matcher(address.getName()).matches()) {
-			return true;
+			valid = true;
 		}
-		return false;
+		return valid;
 	}
 
 	@Override
 	public boolean isValidLengthName(Address address) {
+		boolean valid = false;
 		if (address.getName().length() < 50) {
-			return true;
+			valid = true;
 		}
-		return false;
+		return valid;
 	}
 
 	@Override
 	public boolean isValidNumber(Address address) {
+		boolean valid = false;
 		if (ValidatorPatternServiceHelper.getNumberPattern().matcher(address.getNumber().toString()).matches()) {
-			return true;
+			valid = true;
 		}
-		return false;
+		return valid;
 	}
 }

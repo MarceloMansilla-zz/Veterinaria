@@ -10,12 +10,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
 import ar.com.veterinaria.app.entities.exception.notFound.BreedNotFoundException;
 import ar.com.veterinaria.app.entities.service.UserService;
 import ar.com.veterinaria.app.entities.user.User;
@@ -40,8 +41,7 @@ public class UserController {
 		this.userService = userService;
 	}
 
-	@GetMapping
-	@RequestMapping(value = "/new-User", method = RequestMethod.POST)
+	@PostMapping(value = "/new-User")
 	@ApiOperation(value = "Create a new User", notes = "Create a new User.", response = User.class)
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Successful retrieval of User List", response = User.class),
@@ -59,8 +59,7 @@ public class UserController {
 		}
 	}
 
-	@GetMapping
-	@RequestMapping(value = "/get-list-User", method = RequestMethod.GET)
+	@GetMapping(value = "/get-list-User")
 	@ApiOperation(value = "Returns List of User", notes = "Returns a complete list of User details.", response = User.class)
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Successful retrieval of User List", response = User.class),
@@ -75,7 +74,7 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/{id}")
 	@ApiOperation(value = "Search a Address by ID", response = User.class)
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),
 			@ApiResponse(code = 403, message = "Operation is forbidden"),
@@ -94,7 +93,7 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	@PutMapping(value = "/{id}")
 	@ApiOperation(value = "Update a User by ID", response = User.class)
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),
 			@ApiResponse(code = 403, message = "Operation is forbidden"),
@@ -111,7 +110,7 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{id}")
 	@ApiOperation(value = "Delete a User by ID", response = User.class)
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),
 			@ApiResponse(code = 403, message = "Operation is forbidden"),

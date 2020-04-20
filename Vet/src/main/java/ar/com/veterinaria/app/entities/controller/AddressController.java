@@ -10,11 +10,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import ar.com.veterinaria.app.entities.Address;
 import ar.com.veterinaria.app.entities.exception.notFound.BreedNotFoundException;
 import ar.com.veterinaria.app.entities.service.AddressService;
@@ -39,8 +41,7 @@ public class AddressController {
 		this.addressService = addressService;
 	}
 
-	@GetMapping
-	@RequestMapping(value = "/new-Address", method = RequestMethod.POST)
+	@PostMapping(value = "/new-Address")
 	@ApiOperation(value = "Create a new Address", notes = "Create a new Address.", response = Address.class)
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Successful retrieval of Address List", response = Address.class),
@@ -58,8 +59,7 @@ public class AddressController {
 		}
 	}
 
-	@GetMapping
-	@RequestMapping(value = "/get-list-Address", method = RequestMethod.GET)
+	@GetMapping(value = "/get-list-Address")
 	@ApiOperation(value = "Returns List of Address", notes = "Returns a complete list of Address details.", response = Address.class)
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Successful retrieval of Breed List", response = Address.class),
@@ -74,7 +74,7 @@ public class AddressController {
 		}
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/{id}")
 	@ApiOperation(value = "Search a Address by ID", response = Address.class)
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),
 			@ApiResponse(code = 403, message = "Operation is forbidden"),
@@ -93,7 +93,7 @@ public class AddressController {
 		}
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	@PutMapping(value = "/{id}")
 	@ApiOperation(value = "Update a Address by ID", response = Address.class)
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),
 			@ApiResponse(code = 403, message = "Operation is forbidden"),
@@ -110,7 +110,7 @@ public class AddressController {
 		}
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{id}")
 	@ApiOperation(value = "Delete a Address by ID", response = Address.class)
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"),
 			@ApiResponse(code = 403, message = "Operation is forbidden"),

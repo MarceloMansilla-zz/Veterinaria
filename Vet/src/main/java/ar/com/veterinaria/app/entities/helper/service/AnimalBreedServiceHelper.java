@@ -15,19 +15,21 @@ public class AnimalBreedServiceHelper implements AnimalBreedContractServiceHelpe
 
 	@Override
 	public boolean isValidName(AnimalBreed animalBreed) {
+		boolean valid = false;
 		if (ValidatorPatternServiceHelper.getNamePattern().matcher(animalBreed.getAnimal().getName()).matches()
 				&& ValidatorPatternServiceHelper.getNamePattern().matcher(animalBreed.getBreed().getBreed()).matches()) {
-			return true;
+			valid = true;
 		}
-		return false;
+		return valid;
 	}
 
 	@Override
 	public boolean isValidLengthName(AnimalBreed animalBreed) {
+		boolean valid = false;
 		if (animalBreed.getAnimal().getName().length() <= 70 && animalBreed.getBreed().getBreed().length() <= 50) {
-			return true;
+			valid = true;
+			}
+			return valid;
 		}
-		return false;
-	}
 
 }

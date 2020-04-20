@@ -76,10 +76,11 @@ public class AnimalBreedService implements AnimalBreedContractService {
 
 	@Override
 	public boolean isValidInputData(AnimalBreed animalBreed) {
+		boolean valid = false;
 		if (AnimalBreedManagerServiceHelper.validate(animalBreed)) {
-			return true;
+			valid = true;
 		}
-		return false;
+		return valid;
 	}
 
 }
