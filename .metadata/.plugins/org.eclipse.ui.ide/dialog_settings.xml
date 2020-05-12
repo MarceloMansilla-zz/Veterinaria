@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<list key="installedFeatures">
 		<item value="com.ianbrandt.tools.m2e.mdp.feature:0.0.4.201409291703"/>
+		<item value="gr.uom.java.jdeodorant:5.0.0.202001182000"/>
 		<item value="org.aspectj:1.9.2.201908130916"/>
 		<item value="org.eclipse.ajdt:2.2.4.201908130916"/>
 		<item value="org.eclipse.buildship:3.1.2.v20190903-1802"/>
@@ -81,6 +82,7 @@
 		<item value="org.eclipse.wst.xsl.feature:1.3.900.v201908180412"/>
 		<item value="org.eclipse.zest:1.7.0.201606061308"/>
 		<item value="org.jboss.tools.m2e.wro4j.feature:1.1.0.201406251020"/>
+		<item value="org.sonarlint.eclipse.feature:5.0.0.15138"/>
 		<item value="org.sonatype.m2e.buildhelper.feature:0.15.0.201207090124"/>
 		<item value="org.sonatype.m2e.egit.feature:0.15.1.201806191431"/>
 		<item value="org.sonatype.m2e.mavenarchiver.feature:0.17.4.201905300046"/>
